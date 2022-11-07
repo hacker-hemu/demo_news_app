@@ -1,6 +1,8 @@
 import 'package:demo_news_app/screens/profile.dart';
+import 'package:demo_news_app/screens/videos_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'epapaper_screen.dart';
 import 'news_create_screen.dart';
 import 'news_screen.dart';
 
@@ -22,13 +24,13 @@ class _HomeState extends State<Home> {
     NewsScreen(),
 
     // video screen
-    NewsScreen(),
+    VideosScreen(),
 
     // create news
-    NewsScreen(),
+    NewsCreateScreen(),
 
     // E-paper screen
-    NewsScreen(),
+    EpaperScreen(),
 
     // profile screen
     Profile(),
@@ -188,7 +190,7 @@ class _HomeState extends State<Home> {
         },
         child: const Icon(Icons.add),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       bottomNavigationBar: BottomAppBar(
         // notchMargin: 5,
@@ -196,43 +198,40 @@ class _HomeState extends State<Home> {
         clipBehavior: Clip.antiAlias,
         shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
-          items: [
+          type: BottomNavigationBarType.fixed,
+          items: const [
             // home
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
+                size: 30.0,
               ),
-              label: 'Home',
+              label: '',
             ),
 
             // Video
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.play_circle_rounded,
-              ),
-              label: 'Vidoe',
-            ),
-
-            // create news
-            BottomNavigationBarItem(
-              icon: FloatingActionButton(
-                onPressed: () {
-                  debugPrint('Clicked to Create News Floating Action Button');
-
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => const NewsCreateScreen()),
-                  );
-                },
-                child: const Icon(Icons.add),
+                Icons.play_arrow_rounded,
+                size: 40.0,
               ),
               label: '',
             ),
 
-            // profile
+            // blank
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.newspaper,
+                color: Colors.transparent,
+              ),
+              label: '',
+            ),
+
+            // E-paper
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.newspaper,
+                size: 25.0,
               ),
               label: '',
             ),
@@ -241,13 +240,14 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
+                size: 25.0,
               ),
               label: '',
             ),
           ],
           currentIndex: currentIndex,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.black87,
+          selectedItemColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Colors.black45,
           onTap: (val) {
             setState(() {
               currentIndex = val;

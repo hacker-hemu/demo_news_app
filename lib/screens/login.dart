@@ -182,7 +182,7 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           onTap: () => Navigator.of(context).push(
-                              new MaterialPageRoute(
+                              MaterialPageRoute(
                                   builder: (BuildContext context) =>
                                       new Register())),
                         ),
