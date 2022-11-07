@@ -1,0 +1,71 @@
+name: demo_news_app
+description: Demo News App Description
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+
+  cupertino_icons: ^1.0.2
+  carousel_slider: ^4.1.1
+  http: ^0.13.5
+  shared_preferences: ^2.0.15
+  image_picker: ^0.8.6
+  marquee: ^2.2.3
+  font_awesome_flutter: ^10.2.1
+  flutter_html: ^2.2.1
+  flutter_tts: ^3.5.3
+
+
+#  iski vajah se decrypt error aa rhi hain
+  image_downloader: ^0.31.0
+#  for set hour ago
+  jiffy: ^5.0.0
+  share_plus: ^6.0.1
+  url_launcher: ^6.1.6
+  flutter_local_notifications: any
+  firebase_messaging: ^14.0.3
+  firebase_core: ^2.1.1
+  flutter_summernote: ^1.0.0
+  animated_splash_screen: ^1.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
+
+flutter_native_splash:
+  color: "#42a5f5"

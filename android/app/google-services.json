@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "637029703984",
+    "project_id": "demonewsapp-71bd7",
+    "storage_bucket": "demonewsapp-71bd7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637029703984:android:026ae263fea41a036068f5",
+        "android_client_info": {
+          "package_name": "com.hemant.demo_news_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637029703984-o8ruk1aut30qbuot68he2b66ip5mhise.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hemant.demo_news_app",
+            "certificate_hash": "f62280bab5983b8c7b39a46c7bc13124ba41718f"
+          }
+        },
+        {
+          "client_id": "637029703984-ot9gsjtrro4i216qbu1utrq64fvamqea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDccBK3OePK4y1Gt92Eklm4nx7gqP8B6bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637029703984-ot9gsjtrro4i216qbu1utrq64fvamqea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
