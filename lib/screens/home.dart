@@ -1,10 +1,10 @@
+import 'package:demo_news_app/screens/chewie_video_player.dart';
+import 'package:demo_news_app/screens/epaper_screen.dart';
+import 'package:demo_news_app/screens/news_screen.dart';
 import 'package:demo_news_app/screens/profile.dart';
-import 'package:demo_news_app/screens/videos_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'epapaper_screen.dart';
 import 'news_create_screen.dart';
-import 'news_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,13 +24,13 @@ class _HomeState extends State<Home> {
     NewsScreen(),
 
     // video screen
-    VideosScreen(),
+    ChewieVideoPlayer(),
 
     // create news
     NewsCreateScreen(),
 
     // E-paper screen
-    EpaperScreen(),
+    EpaperSreen(),
 
     // profile screen
     Profile(),

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:demo_news_app/epaper_page.dart';
 import 'package:demo_news_app/main_drawer.dart';
+import 'package:demo_news_app/screens/epaper_screen.dart';
+import 'package:flutter/material.dart';
 
 import 'read_news_page.dart';
 
@@ -408,7 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const ReadNews(),
 
     // this is e-paper page widget
-    const Epaper(),
+    const EpaperSreen(),
   ];
 
   // this variable for bottom bar

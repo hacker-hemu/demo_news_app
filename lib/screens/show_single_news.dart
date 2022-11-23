@@ -673,8 +673,9 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                       ),
                     ),
 
+              // download image for news
               IconButton(
-                // title: 'Download',
+                // downlaod image
                 icon: Icon(Icons.file_download),
                 onPressed: () async {
                   try {
@@ -713,5 +714,12 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
         ),
       ),
     );
+  }
+
+  // disposing speaking
+  @override
+  void dispose() {
+    speak('').dispose();
+    super.dispose();
   }
 }

@@ -2,6 +2,7 @@ import 'package:demo_news_app/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'notification/local_notification_service.dart';
 
@@ -19,6 +20,12 @@ void main() async {
   // for the handsome notification view
   LocalNotificationService.initialize();
   runApp(const MyApp());
+
+  // forcefully set portrait mode only
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 Color themeColor = Colors.blue;

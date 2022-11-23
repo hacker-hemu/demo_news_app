@@ -47,10 +47,13 @@ import '../components/vertical_line.dart';
 // const baseURL = 'http://10.0.2.2:8000';
 
 // home wifi
-const baseURL = 'http://192.168.0.106';
+// const baseURL = 'http://192.168.0.106';
 
 // office wifi
-// const baseURL = 'http://192.168.1.12';
+// const baseURL = 'http://192.168.1.5';
+
+// production URL
+const baseURL = 'https://demonews.populartv.in';
 
 const loginURL = '$baseURL/api/login';
 const registerURL = '$baseURL/api/register';
@@ -58,6 +61,8 @@ const logoutURL = '$baseURL/api/logout';
 const userURL = '$baseURL/api/user';
 const newsURL = '$baseURL/api/news';
 const userNewsURL = '$baseURL/api/userNews';
+const videoNewsURL = '$baseURL/api/videoNews';
+const EpaperNewsURL = '$baseURL/api/epapers';
 const commentsURL = '$baseURL/api/comments';
 
 // news category url

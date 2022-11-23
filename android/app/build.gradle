@@ -27,6 +27,7 @@ apply plugin:  'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    buildToolsVersion '26.0.3'
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
