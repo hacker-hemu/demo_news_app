@@ -268,7 +268,7 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                                                     errorBuilder: (context,
                                                         error, stackTrace) {
                                                       return Image.asset(
-                                                          'assets/images/default_ad_image.webp');
+                                                          defaultAdImage);
                                                     },
 
                                                     height: double.infinity,
@@ -599,7 +599,7 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                 ),
               ),
 
-              // news short description
+              // news main content description
               Html(
                 data: news.content ?? '',
                 style: {

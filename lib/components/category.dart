@@ -45,8 +45,7 @@ Widget Category({required bool loading, List? list}) {
                                     category.image.toString(),
                                     // for error handling
                                     errorBuilder: (context, error, stackTrace) {
-                                      return Image.asset(
-                                          'assets/images/default_ad_image.webp');
+                                      return Image.asset(defaultAdImage);
                                     },
 
                                     height: double.infinity,

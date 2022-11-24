@@ -85,6 +85,7 @@ const cityURL = '$baseURL/api/city';
 
 // image urls
 const shortLogoURL = 'assets/images/logoShort.png';
+const defaultAdImage = 'assets/images/default_ad_image.jpg';
 const newsImageURL = '${baseURL}/uploads/news';
 const newsUserImageURL = '${baseURL}/uploads/user';
 const userImageURL = '';
@@ -103,6 +104,11 @@ const clientEmail = 'demmonewsapp@example.com';
 const serverError = 'Server Error';
 const unauthorized = 'Unauthorized';
 const someThingWentWrong = 'Some Thing Went Wrong, Try Again';
+
+// app details
+const appName = 'Demo News App';
+const appVersion = '1.0';
+const developerName = 'Hemant Kumar Joshi';
 
 // -------  Form input decoration  -------
 InputDecoration kInputDecoration(String label) {

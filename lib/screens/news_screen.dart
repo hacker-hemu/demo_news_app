@@ -419,6 +419,19 @@ class _NewsScreenState extends State<NewsScreen> {
                       height: 10.0,
                     ),
 
+                    // News Ticker
+                    BuildAnimatedText(
+                      startEndWith: '*',
+                      text: _newsList.isNotEmpty
+                          ? _newsList[0].breakingNewsTitle
+                          : nullBreakingNews,
+                    ),
+
+                    // vertical space
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+
                     // carousel for advertisement
                     _adsList.isEmpty
                         ?
@@ -438,7 +451,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(10.0),
                                     child: Image.asset(
-                                      'assets/images/default_ad_image.webp',
+                                      defaultAdImage,
                                     ),
                                   ),
 
@@ -483,14 +496,6 @@ class _NewsScreenState extends State<NewsScreen> {
                             ),
                           )
                         : Advertisement(loading: _loading, list: _adsList),
-
-                    // News Ticker
-                    BuildAnimatedText(
-                      startEndWith: '*',
-                      text: _newsList.isNotEmpty
-                          ? _newsList[0].breakingNewsTitle
-                          : nullBreakingNews,
-                    ),
 
                     // vertical space
                     const SizedBox(
