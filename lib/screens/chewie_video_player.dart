@@ -28,11 +28,11 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
       videoPlayerController: videoPlayerController!,
       autoPlay: true,
       looping: true,
-      allowFullScreen: true,
-      fullScreenByDefault: true,
+      allowFullScreen: false,
+      fullScreenByDefault: false,
       deviceOrientationsAfterFullScreen: [
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
+        // DeviceOrientation.portraitUp,
+        // DeviceOrientation.portraitDown,
       ],
       // showControls: true,
       aspectRatio: 16 / 9,
@@ -44,6 +44,8 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 200.0,
+      color: Colors.black,
       child: Center(
         child: Chewie(
           controller: chewieController!,

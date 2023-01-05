@@ -8,6 +8,7 @@ class MainNewsPostTitle extends StatelessWidget {
     this.category,
     this.hourAgo,
     this.creatorImage,
+    this.textColor,
   });
 
   final String? creatorImage;
@@ -15,6 +16,7 @@ class MainNewsPostTitle extends StatelessWidget {
   final String? creatorName;
   final String? category;
   final String? hourAgo;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +91,8 @@ class MainNewsPostTitle extends StatelessWidget {
                   ),
                   Text(
                     '$category ताजा खबरो ',
-                    style: const TextStyle(
-                      color: Colors.deepOrange,
+                    style: TextStyle(
+                      color: textColor,
                       fontSize: 15.0,
                     ),
                   ),

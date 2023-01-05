@@ -50,10 +50,10 @@ import '../components/vertical_line.dart';
 // const baseURL = 'http://192.168.0.106';
 
 // office wifi
-// const baseURL = 'http://192.168.1.5';
+const baseURL = 'http://192.168.1.9';
 
 // production URL
-const baseURL = 'https://demonews.populartv.in';
+// const baseURL = 'https://demonews.populartv.in';
 
 const loginURL = '$baseURL/api/login';
 const registerURL = '$baseURL/api/register';
@@ -64,6 +64,7 @@ const userNewsURL = '$baseURL/api/userNews';
 const videoNewsURL = '$baseURL/api/videoNews';
 const EpaperNewsURL = '$baseURL/api/epapers';
 const commentsURL = '$baseURL/api/comments';
+const channelsURL = '$baseURL/api/channels';
 
 // news category url
 const categoryURL = '$baseURL/api/category';
@@ -86,16 +87,23 @@ const cityURL = '$baseURL/api/city';
 // image urls
 const shortLogoURL = 'assets/images/logoShort.png';
 const defaultAdImage = 'assets/images/default_ad_image.jpg';
+const defaultCategoryImage = 'assets/images/defaultCategoryImage.png';
+//TODO: path change of default channel image
+const defaultChannelImage = 'assets/images/defaultCategoryImage.png';
 const newsImageURL = '${baseURL}/uploads/news';
 const newsUserImageURL = '${baseURL}/uploads/user';
 const userImageURL = '';
 const categoryImageURL = '';
 
+// color details
+Color secondaryColor87 = Colors.black.withOpacity(0.5);
+Color secondaryColor45 = Colors.black.withOpacity(0.7);
+
 // sharing information
 //TODO: Replace URL with this app Play Store URL
-// play stor aap URL
+// playStore aap URL
 const playStoreAppLink =
-    'https://play.google.com/store/apps/details?id=com.hemant.demo_news_app';
+    'https://play.google.com/store/apps/details?id=com.technolab.demo_news_app';
 
 const clientMobileNumber = '1234567890';
 const clientEmail = 'demmonewsapp@example.com';
@@ -181,21 +189,29 @@ Row kLoginRegisterHint(String? text, String? label, Function? onTap) {
 }
 
 //    news category name of news
-Widget newsCategoryName({String? label}) {
+Widget newsCategoryName({
+  String? label,
+  Color? verticalLineColor = Colors.blue,
+}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.fromLTRB(15.0, 15.0, 0, 0),
+        margin: EdgeInsets.fromLTRB(15.0, 5.0, 0, 0),
         child: Row(
           children: [
             Container(
-                margin: EdgeInsets.only(right: 5.0),
-                child: CustomVerticalLine(Colors.deepOrange, 35.0)),
+              height: 20.0,
+              margin: EdgeInsets.only(right: 5.0),
+              child: CustomVerticalLine(
+                color: verticalLineColor,
+                height: 35.0, //vertical line height
+              ),
+            ),
             Text(
               '$label'.toUpperCase(),
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 Widget customListTile(
-    {IconData? icon, String? label, VoidCallback? onTap, Color? dividerColor}) {
+    {IconData? icon,
+    String? label,
+    VoidCallback? onTap,
+    Color? dividerColor,
+    Color? iconColor = Colors.black54}) {
   return Column(
     children: [
       // vertical space
@@ -21,7 +25,8 @@ Widget customListTile(
                 // icon
                 Icon(
                   icon,
-                  color: Colors.black87,
+                  // color: Colors.black87,
+                  color: iconColor,
                 ),
 
                 // space between
@@ -41,7 +46,7 @@ Widget customListTile(
             ),
 
             // icon
-            const Icon(
+            Icon(
               Icons.arrow_forward_ios_rounded,
               color: Colors.black38,
               size: 16.0,

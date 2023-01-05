@@ -41,7 +41,9 @@ class MyApp extends StatelessWidget {
       title: 'Demo News App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Hind',
       ),
+      themeMode: ThemeMode.light,
       // home: const Loading(),
       home: const SplashScreen(),
     );

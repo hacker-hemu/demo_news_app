@@ -225,7 +225,9 @@ class _ProfileState extends State<Profile> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 0.0,
+          // toolbarHeight: 40.0,
+          title: const Text('Profile'),
+          centerTitle: true,
           bottom: const TabBar(
             tabs: [
               Tab(icon: Text('Edit Profile')),
@@ -307,7 +309,7 @@ class _ProfileState extends State<Profile> {
                           },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => Colors.blue,
+                              (states) => Theme.of(context).primaryColor,
                             ),
                           ),
                           child: const Text(
@@ -483,6 +485,8 @@ class _ProfileState extends State<Profile> {
             //       ),
 
             // my post section
+
+            // user news
             Container(
               child: SingleChildScrollView(
                 child: Column(

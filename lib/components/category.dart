@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/constants.dart';
+
 Widget Category({required bool loading, List? list}) {
   return SizedBox(
     child: loading
@@ -13,8 +15,8 @@ Widget Category({required bool loading, List? list}) {
         : CarouselSlider(
             // carousel option for category
             options: CarouselOptions(
-              height: 150.0,
-              viewportFraction: 0.5,
+              height: 100.0,
+              viewportFraction: 0.33,
               // enableInfiniteScroll: false,
               autoPlay: true,
             ),
@@ -30,66 +32,61 @@ Widget Category({required bool loading, List? list}) {
                         },
                         child: Container(
                           // width: double.infinity,
-                          child: Card(
-                            elevation: 5.0,
-                            semanticContainer: true,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                            child: Stack(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  child: Image.network(
-                                    category.image.toString(),
-                                    // for error handling
-                                    errorBuilder: (context, error, stackTrace) {
-                                      return Image.asset(defaultAdImage);
-                                    },
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 5.0,
+                          ),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image.network(
+                                  category.image.toString(),
+                                  // for error handling
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(defaultCategoryImage);
+                                  },
 
-                                    height: double.infinity,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
+                                  // height: double.infinity,
+                                  // width: double.infinity,
+                                  fit: BoxFit.cover,
                                 ),
+                              ),
 
-                                // carousel title
-                                Positioned(
-                                  left: 0,
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Colors.black.withOpacity(0),
-                                            Colors.black,
-                                          ],
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                        ),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0,
-                                        vertical: 15.0,
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          category.name,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      )),
-                                ),
-                              ],
-                            ),
+                              // carousel title
+                              // Positioned(
+                              //   left: 0,
+                              //   right: 0,
+                              //   bottom: 0,
+                              //   child: Container(
+                              //       decoration: BoxDecoration(
+                              //         borderRadius:
+                              //             BorderRadius.circular(15.0),
+                              //         gradient: LinearGradient(
+                              //           colors: [
+                              //             Colors.black.withOpacity(0),
+                              //             Colors.black,
+                              //           ],
+                              //           begin: Alignment.topCenter,
+                              //           end: Alignment.bottomCenter,
+                              //         ),
+                              //       ),
+                              //       padding: const EdgeInsets.symmetric(
+                              //         horizontal: 10.0,
+                              //         vertical: 15.0,
+                              //       ),
+                              //       child: Center(
+                              //         child: Text(
+                              //           category.name,
+                              //           overflow: TextOverflow.ellipsis,
+                              //           style: const TextStyle(
+                              //             color: Colors.white,
+                              //             fontSize: 15.0,
+                              //             fontWeight: FontWeight.bold,
+                              //           ),
+                              //         ),
+                              //       )),
+                              // ),
+                            ],
                           ),
                         ),
                       );

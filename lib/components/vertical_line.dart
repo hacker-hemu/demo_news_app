@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget CustomVerticalLine(Color color,  double height) {
+Widget CustomVerticalLine({Color? color, double? height}) {
   return Container(
     width: 5.0,
     height: height,

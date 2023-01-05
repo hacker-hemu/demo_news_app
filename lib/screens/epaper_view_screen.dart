@@ -48,7 +48,7 @@ class _EpaperViewScreenState extends State<EpaperViewScreen> {
           //share
           likeShareComment(
               label: '',
-              icon: FontAwesomeIcons.share,
+              icon: FontAwesomeIcons.shareNodes,
               iconColor: Colors.white,
               onPressed: () {
                 Share.share(

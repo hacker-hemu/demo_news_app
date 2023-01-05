@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:demo_news_app/models/api_response.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_summernote/flutter_summernote.dart';
+// import 'package:flutter_summernote/flutter_summernote.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../constants/constants.dart';
@@ -29,7 +29,7 @@ class _NewsCreateScreenState extends State<NewsCreateScreen> {
   TextEditingController titleController = TextEditingController(),
       newsDescController = TextEditingController();
 
-  GlobalKey<FlutterSummernoteState> keyEditor = GlobalKey();
+  // GlobalKey<FlutterSummernoteState> keyEditor = GlobalKey();
 
   // loading false
   bool _loading = false;
@@ -69,10 +69,8 @@ class _NewsCreateScreenState extends State<NewsCreateScreen> {
       image.toString(),
     );
 
-    final value = keyEditor.currentState?.getText();
+    // final value = keyEditor.currentState?.getText();
 
-    print(
-        '========{{{{{{{{{{{{{{{{{{{{{ $value }}}}}}}}}}}}}}}}}}}}}}==========');
 
     if (response.error == null) {
       Navigator.of(context).pop();
@@ -278,20 +276,20 @@ class _NewsCreateScreenState extends State<NewsCreateScreen> {
                             ),
 
                             // summerNote for news content
-                            FlutterSummernote(
-                              value: keyEditor.currentState?.text,
-                              hint: "Add News Content",
-                              key: keyEditor,
-                              height: 300.0,
-                              hasAttachment: true,
-                              customToolbar: """
-                                    [
-                                      ['style', ['bold', 'italic', 'underline', 'clear']],
-                                      ['font', ['strikethrough', 'superscript', 'subscript']],
-                                      ['insert', ['link', 'table', 'hr']]
-                                    ]
-                                  """,
-                            ),
+                            // FlutterSummernote(
+                            //   value: keyEditor.currentState?.text,
+                            //   hint: "Add News Content",
+                            //   key: keyEditor,
+                            //   height: 300.0,
+                            //   hasAttachment: true,
+                            //   customToolbar: """
+                            //         [
+                            //           ['style', ['bold', 'italic', 'underline', 'clear']],
+                            //           ['font', ['strikethrough', 'superscript', 'subscript']],
+                            //           ['insert', ['link', 'table', 'hr']]
+                            //         ]
+                            //       """,
+                            // ),
                           ],
                         ),
                       ),

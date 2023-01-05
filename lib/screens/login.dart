@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
 
                     // vertical space
                     const SizedBox(
-                      height: 60.0,
+                      height: 40.0,
                     ),
 
                     // email

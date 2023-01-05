@@ -1,4 +1,4 @@
-package com.hemant.demo_news_app
+package com.technolab.demo_news_app
 
 import io.flutter.embedding.android.FlutterActivity
 
