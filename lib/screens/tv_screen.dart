@@ -240,14 +240,13 @@ class _TvScreenState extends State<TvScreen> {
                               // enableInfiniteScroll: false,
                               autoPlay: false,
                             ),
-                            // TODO: change the variable name news to ad when adding advertisment api
+                            // TODO: change the variable name news to ad when adding advertisement api
                             items: _channelsList.map(
                                   (single_channel) {
                                 return Builder(
                                   builder: (BuildContext context) {
                                     try {
                                       return InkWell(
-
                                         onTap: () {
                                           Navigator.push(
                                             context,

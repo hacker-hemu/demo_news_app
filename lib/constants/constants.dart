@@ -65,6 +65,8 @@ const videoNewsURL = '$baseURL/api/videoNews';
 const EpaperNewsURL = '$baseURL/api/epapers';
 const commentsURL = '$baseURL/api/comments';
 const channelsURL = '$baseURL/api/channels';
+const showsURL = '$baseURL/api/shows';
+const partsURL = '$baseURL/api/parts';
 
 // news category url
 const categoryURL = '$baseURL/api/category';
@@ -88,8 +90,9 @@ const cityURL = '$baseURL/api/city';
 const shortLogoURL = 'assets/images/logoShort.png';
 const defaultAdImage = 'assets/images/default_ad_image.jpg';
 const defaultCategoryImage = 'assets/images/defaultCategoryImage.png';
-//TODO: path change of default channel image
+//TODO: path change of default channel and shows image
 const defaultChannelImage = 'assets/images/defaultCategoryImage.png';
+const defaultShowImage = 'assets/images/defaultCategoryImage.png';
 const newsImageURL = '${baseURL}/uploads/news';
 const newsUserImageURL = '${baseURL}/uploads/user';
 const userImageURL = '';
