@@ -63,6 +63,14 @@ class _LoginState extends State<Login> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    textEmail.text = 'admin@example.com';
+    textPassword.text = 'password';
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

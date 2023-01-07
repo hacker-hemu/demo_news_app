@@ -1,16 +1,12 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demo_news_app/models/channels.dart';
-import 'package:demo_news_app/screens/chewie_video_player.dart';
-import 'package:demo_news_app/screens/show_single_news.dart';
-import 'package:demo_news_app/screens/tv_channels_screen.dart';
+import 'package:demo_news_app/screens/tv_screens/all_channels.dart';
 import 'package:flutter/material.dart';
 
 import '../components/ads.dart';
-import '../components/category.dart';
-import '../components/main_news_post_title.dart';
+import '../components/drawer.dart';
 import '../constants/constants.dart';
 import '../models/api_response.dart';
 import '../models/user.dart';
+import '../notification/all_notifications_screen.dart';
 import '../services/ads_service.dart';
 import '../services/channels_service.dart';
 import '../services/user_service.dart';
@@ -27,7 +23,7 @@ class _TvScreenState extends State<TvScreen> {
   // save ads
   List<dynamic> _adsList = [];
 
-  // save news
+  // save channels
   List<dynamic> _channelsList = [];
 
   int userId = 0;
@@ -107,211 +103,122 @@ class _TvScreenState extends State<TvScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        // color: Color(0xff0c111b),
-        child: Column(
-          children: [
-            // ChewieVideoPlayer(),
-
-            SizedBox(
-              height: 5.0,
-            ),
-
-            // carousel for advertisement
-            _adsList.isEmpty
-                ?
-                // static ad image TODO: replace with news image when test ad image is ready
-                Container(
-                    // width: double.infinity,
-                    child: Card(
-                      elevation: 5.0,
-                      semanticContainer: true,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.asset(
-                              defaultAdImage,
-                            ),
+      child: Scaffold(
+        // appbar
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Image.asset(
+            shortLogoURL,
+            width: 150.0,
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  logout().then((value) => {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationScreen(),
                           ),
+                        ),
+                      });
+                  // redirecting to home screen
+                },
+                icon: const Icon(Icons.notifications))
+          ],
+        ),
 
-                          // carousel title
+        // drawer TODO: Create a news page for drawer
+        drawer: CustomDrawer(),
 
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.0),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.black.withOpacity(0),
-                                    Colors.black,
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
+        body: Container(
+          // color: Color(0xff0c111b),
+          child: Column(
+            children: [
+              // ChewieVideoPlayer(),
+
+              SizedBox(
+                height: 5.0,
+              ),
+
+              // carousel for advertisement
+              _adsList.isEmpty
+                  ?
+                  // static ad image TODO: replace with news image when test ad image is ready
+                  Container(
+                      // width: double.infinity,
+                      child: Card(
+                        elevation: 5.0,
+                        semanticContainer: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.asset(
+                                defaultAdImage,
+                              ),
+                            ),
+
+                            // carousel title
+
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.black.withOpacity(0),
+                                      Colors.black,
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                 ),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0,
-                                vertical: 15.0,
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'Ads Title',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                  vertical: 15.0,
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Ads Title',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                : Advertisement(loading: _loading, list: _adsList),
+                    )
+                  : Advertisement(loading: _loading, list: _adsList),
 
-            // channels
-            if (_loading)
-              Container(
-                height:
-                    // MediaQuery.of(context).size.height - 350.0,
-                    300.0,
-                child: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            else
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 1,
-                itemBuilder: (BuildContext context, int index) {
-                  Channel channels = _channelsList[index];
-                  // print('hello');
-                  // print('news image ' +
-                  //     news.newsImages.toString());
-                  try {
-                    // print('news image ' +
-                    //     news.newsImages.toString());
-                    return InkWell(
-                        child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // category  title
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const[
-                              Text(
-                                'Channels',
-                                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.right,
-                              ),
-                               const Icon(Icons.arrow_forward_ios, size: 15.0,),
-                            ],
-                          ),
-                        ),
-
-                        // all channel in slider view
-                        SizedBox(
-                          child: _loading
-                              ? Container(
-                            height: 200.0,
-                            child: const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          )
-                              : CarouselSlider(
-                            // carousel option for category
-                            options: CarouselOptions(
-                              height: 150.0,
-                              viewportFraction: 0.75,
-                              // enableInfiniteScroll: false,
-                              autoPlay: false,
-                            ),
-                            // TODO: change the variable name news to ad when adding advertisement api
-                            items: _channelsList.map(
-                                  (single_channel) {
-                                return Builder(
-                                  builder: (BuildContext context) {
-                                    try {
-                                      return InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute<void>(
-                                              builder: (BuildContext context) {
-                                                // TODO: redirecting to user_screen
-                                                // return Container();
-                                                return TvChannelsScreen(
-                                                  channel: single_channel,
-                                                );
-                                              },
-                                            ),
-                                          );
-                                        },
-                                        child:  Container(
-                                          // width: double.infinity,
-                                          margin: const EdgeInsets
-                                              .symmetric(
-                                            horizontal: 5.0,
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(10.0),
-                                                child: Image.network(
-                                                  single_channel.image
-                                                      .toString(),
-                                                  // for error handling
-                                                  errorBuilder:
-                                                      (context, error,
-                                                      stackTrace) {
-                                                    return Image.asset(
-                                                        defaultChannelImage);
-                                                  },
-
-                                                  // height: double.infinity,
-                                                  // width: double.infinity,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    } catch (e) {
-                                      print(e);
-                                      return Container();
-                                    }
-                                  },
-                                );
-                              },
-                            ).toList(),
-                          ),
-                        ),
-                      ],
-                    ),);
-                  } catch (e) {
-                    print(e);
-                    return Container();
-                  }
-                },
-              ),
-          ],
+              // channels
+              if (_loading)
+                Container(
+                  height:
+                      // MediaQuery.of(context).size.height - 350.0,
+                      300.0,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              else
+                const AllChannels(),
+            ],
+          ),
         ),
       ),
     );

@@ -7,6 +7,7 @@ class Channel {
   String? videLink;
   String? image;
   int? isPopular;
+  int? isRecommended;
   // List<dynamic>? breakingNewsTitle;
   List<dynamic>? newsImages;
   String? videoLink;
@@ -19,6 +20,7 @@ class Channel {
     this.title,
     this.image,
     this.isPopular,
+    this.isRecommended,
     this.newsImages,
     // this.breakingNewsTitle,
     this.videoLink,
@@ -36,15 +38,11 @@ class Channel {
       title: json['title'],
       image: json['image'],
       isPopular: json['is_popular'],
+      isRecommended: json['is_recommended'],
       newsImages: json['news_image'],
       // breakingNewsTitle: json['breaking_news_title'],
       videoLink: json['video_link'],
       categoryName: json['category_name'],
-      shows: Shows(
-        id: json['id'],
-        name: json['name'],
-        image: json['image'],
-      ),
     );
   }
 }

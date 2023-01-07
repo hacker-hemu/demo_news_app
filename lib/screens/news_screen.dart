@@ -1,8 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demo_news_app/screens/news_create_screen.dart';
-import 'package:demo_news_app/screens/profile.dart';
 import 'package:demo_news_app/screens/show_single_news.dart';
-import 'package:demo_news_app/screens/terms_and_conditions.dart';
 import 'package:demo_news_app/services/news_service.dart';
 import 'package:demo_news_app/services/user_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -13,7 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import '../components/ads.dart';
 import '../components/breaking_text_slider.dart';
 import '../components/category.dart';
-import '../components/customListTile.dart';
+import '../components/drawer.dart';
 import '../components/likeCommentShare.dart';
 import '../components/main_news_post_title.dart';
 import '../constants/constants.dart';
@@ -24,7 +21,6 @@ import '../notification/all_notifications_screen.dart';
 import '../notification/local_notification_service.dart';
 import '../services/ads_service.dart';
 import '../services/news_category_service.dart';
-import 'about.dart';
 import 'demo.dart';
 import 'login.dart';
 
@@ -287,150 +283,8 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
 
       // drawer TODO: Create a news page for drawer
-      drawer: Drawer(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // vertical space
-                const SizedBox(
-                  height: 20.0,
-                ),
+      drawer: CustomDrawer(),
 
-                // app short Logo
-                Image.asset(
-                  shortLogoURL,
-                  width: 200.0,
-                  height: 50.0,
-                ),
-
-                // vertical space
-                const SizedBox(
-                  height: 30.0,
-                ),
-
-                // title name => setting
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Settings',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-
-                // vertical space
-                const SizedBox(
-                  height: 20.0,
-                ),
-
-                // profile
-                customListTile(
-                  icon: Icons.account_circle_rounded,
-                  label: 'Profile',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const Profile(),
-                      ),
-                    );
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // my post
-                customListTile(
-                  icon: Icons.add_chart_rounded,
-                  label: 'Create News',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const NewsCreateScreen(),
-                      ),
-                    );
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // notification
-                customListTile(
-                  icon: Icons.notifications_rounded,
-                  label: 'Notification',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const NotificationScreen(),
-                      ),
-                    );
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // terms and condition
-                customListTile(
-                  icon: Icons.event_note_rounded,
-                  label: 'Terms and Conditions',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const TermsAndConditions(),
-                      ),
-                    );
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // share app
-                customListTile(
-                  icon: Icons.share,
-                  label: 'Share With Friend',
-                  onTap: () {
-                    Share.share(
-                        'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                        subject: 'Look what I made!');
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // about
-                customListTile(
-                  icon: Icons.info_rounded,
-                  label: 'About',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const About(),
-                      ),
-                    );
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-
-                // logout
-                customListTile(
-                  icon: Icons.logout_rounded,
-                  label: 'Logout',
-                  onTap: () {
-                    logout().then((value) => {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => const Login()),
-                              (route) => false)
-                        });
-                    debugPrint('Logout Success');
-                    // redirecting to home screen
-                  },
-                  iconColor: Theme.of(context).primaryColor,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
       body: _loading
           ? const Center(
               child: CircularProgressIndicator(),
@@ -977,29 +831,6 @@ class _NewsScreenState extends State<NewsScreen> {
                                 }
                               },
                             ),
-
-                          // Container(
-                          //     padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                          //     child: Row(
-                          //       mainAxisAlignment: MainAxisAlignment.center,
-                          //       children: [
-                          //         ElevatedButton(
-                          //             onPressed: () {
-                          //               debugPrint(
-                          //                   'Show more button pressed and redirecting to category page');
-                          //
-                          //               Navigator.push(context,
-                          //                   MaterialPageRoute<void>(
-                          //                 builder: (BuildContext context) {
-                          //                   // redirecting to user_screen
-                          //                   return Category(
-                          //                       Query: 'Technology');
-                          //                 },
-                          //               ));
-                          //             },
-                          //             child: const Text('SHOW MORE'))
-                          //       ],
-                          //     )),
                         ],
                       ),
                     ),

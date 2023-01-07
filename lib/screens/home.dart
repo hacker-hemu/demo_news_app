@@ -1,4 +1,3 @@
-import 'package:demo_news_app/screens/chewie_video_player.dart';
 import 'package:demo_news_app/screens/epaper_screen.dart';
 import 'package:demo_news_app/screens/news_screen.dart';
 import 'package:demo_news_app/screens/profile.dart';

@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
 import '../models/api_response.dart';
 import '../models/channels.dart';
-import '../models/news.dart';
 
 // get all news
 Future<ApiResponse> getChannels() async {

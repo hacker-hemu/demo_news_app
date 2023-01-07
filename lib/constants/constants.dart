@@ -50,7 +50,7 @@ import '../components/vertical_line.dart';
 // const baseURL = 'http://192.168.0.106';
 
 // office wifi
-const baseURL = 'http://192.168.1.9';
+const baseURL = 'http://192.168.1.8';
 
 // production URL
 // const baseURL = 'https://demonews.populartv.in';
@@ -65,6 +65,7 @@ const videoNewsURL = '$baseURL/api/videoNews';
 const EpaperNewsURL = '$baseURL/api/epapers';
 const commentsURL = '$baseURL/api/comments';
 const channelsURL = '$baseURL/api/channels';
+const sportsChannelsURL = '$baseURL/api/sports_channels';
 const showsURL = '$baseURL/api/shows';
 const partsURL = '$baseURL/api/parts';
 
