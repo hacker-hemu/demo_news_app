@@ -144,6 +144,12 @@ const Color kAppBarIconLightColor = Colors.white;
 // appBarIcon-dark
 const Color kAppBarIconDarkColor = Colors.black;
 
+// appBarIcon-light
+const Color kIconLightColor = Colors.white60;
+
+// appBarIcon-dark
+const Color kIconDarkColor = Colors.black;
+
 // ------- Tv details  End -------
 
 // -------  Form input decoration  -------

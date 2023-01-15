@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../components/ads.dart';
 import '../../components/likeCommentShare.dart';
 import '../../constants/constants.dart';
 import '../../models/api_response.dart';
@@ -34,9 +35,6 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
   int userId = 0;
   bool _loading = true;
   User? user;
-
-  // it's for video
-  bool _fullScreen = false;
 
   // getting all ads
   Future<void> retriveAds() async {
@@ -100,18 +98,24 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
     super.deactivate();
   }
 
+  bool _fullScreen = false; // it's for video
+  bool _infoVisible = false;
+  bool _isLinkCopied = false; //copy link
+  bool _isLiked = false; //video like dummy
+
   @override
   Widget build(BuildContext context) {
     // getting news from main news screen
-    Shows shows = widget.shows;
+    Shows show = widget.shows;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kBgLightColor,
         // appbar
         appBar: _fullScreen
             ? null
             : AppBar(
-                iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
-                backgroundColor: Colors.white,
+                iconTheme: IconThemeData(color: kAppBarIconLightColor),
+                backgroundColor: kBgAppBarColor,
                 centerTitle: true,
                 title: Image.asset(
                   shortLogoURL,
@@ -144,6 +148,7 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
             showVideoProgressIndicator: true,
           ),
           builder: (context, player) => Scaffold(
+            backgroundColor: kBgLightColor,
             body: RefreshIndicator(
               onRefresh: () {
                 return retriveShows();
@@ -155,6 +160,86 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                     height: 5.0,
                   ),
 
+                  // like share tile
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      //info
+                      likeShareComment(
+                        label: '',
+                        icon: Icons.info_outline,
+                        iconColor: _infoVisible
+                            ? Theme.of(context).primaryColor
+                            : kIconLightColor,
+                        onPressed: () {
+                          return setState(() {
+                            _infoVisible = !_infoVisible;
+                          });
+                        },
+                        iconSize: 23.0,
+                      ),
+                      //like
+                      likeShareComment(
+                        label: '',
+                        icon: _isLiked
+                            ? FontAwesomeIcons.solidHeart
+                            : FontAwesomeIcons.heart,
+                        iconColor: _isLiked
+                            ? Theme.of(context).primaryColor
+                            : kIconLightColor,
+                        onPressed: () {
+                          return setState(() {
+                            _isLiked = !_isLiked;
+                            if (_isLiked == true) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text('Thanks'),
+                              ));
+                            }
+                          });
+                        },
+                        iconSize: 20.0,
+                      ),
+
+                      // link
+                      likeShareComment(
+                        label: '',
+                        icon: FontAwesomeIcons.link,
+                        iconColor: _isLinkCopied
+                            ? Theme.of(context).primaryColor
+                            : kIconLightColor,
+                        onPressed: () {
+                          Clipboard.setData(
+                                  const ClipboardData(text: playStoreAppLink))
+                              .then((value) {
+                            setState(() {
+                              _isLinkCopied = true;
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Link Copied'),
+                              ),
+                            );
+                          });
+                        },
+                        iconSize: 20.0,
+                      ),
+                      // share
+                      likeShareComment(
+                        label: '',
+                        icon: Icons.share,
+                        iconColor: kIconLightColor,
+                        onPressed: () {
+                          Share.share(
+                            'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                            subject: 'Look what I made!',
+                          );
+                        },
+                        iconSize: 20.0,
+                      ),
+                    ],
+                  ),
+
                   // channel name and category
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -162,9 +247,12 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          shows.name.toString(),
+                          '${show.name}',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18.0),
+                            color: kTextLightColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                          ),
                         ),
                         // category badge
                         Badge(
@@ -174,7 +262,7 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                           borderRadius: BorderRadius.circular(4),
                           badgeColor: Theme.of(context).primaryColor,
                           badgeContent: Text(
-                            ' ${shows.channelId.toString()} ',
+                            ' ${show.id.toString()} ', //TODO add channel name in api field
                             style: TextStyle(color: Colors.white),
                           ),
                         )
@@ -183,44 +271,96 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                   ),
 
                   // channel title
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Text(
-                      shows.title.toString(),
-                      softWrap: false,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.justify,
+                  Visibility(
+                    visible: _infoVisible,
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        '${show?.title}',
+                        softWrap: false,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          color: kTextLightColor.withOpacity(0.5),
+                        ),
+                      ),
                     ),
                   ),
 
-                  // like share tile
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      likeShareComment(
-                        label: '',
-                        icon: FontAwesomeIcons.heart,
-                      ),
-                      likeShareComment(
-                        label: '',
-                        icon: FontAwesomeIcons.link,
-                      ),
-                      likeShareComment(
-                        label: '',
-                        icon: FontAwesomeIcons.share,
-                        onPressed: () {
-                          Share.share(
-                              'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                              subject: 'Look what I made!');
-                        },
-                      ),
-                    ],
+                  // vertical space
+                  SizedBox(
+                    height: 10.0,
                   ),
 
+                  // carousel for advertisement
+                  _adsList.isEmpty
+                      ?
+                      // static ad image TODO: replace with news image when test ad image is ready
+                      Container(
+                          // width: double.infinity,
+                          child: Card(
+                            elevation: 5.0,
+                            semanticContainer: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Image.asset(
+                                    defaultAdImage,
+                                  ),
+                                ),
+
+                                // carousel title
+
+                                Positioned(
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.black.withOpacity(0),
+                                          Colors.black,
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0,
+                                      vertical: 15.0,
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'Ads Title',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color: kTextLightColor,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Advertisement(loading: _loading, list: _adsList),
+
+                  // vertical space
                   SizedBox(
-                    height: 5.0,
+                    height: 10.0,
                   ),
+
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.all(2.5),
@@ -320,6 +460,7 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
     super.initState();
 
     retriveShows();
+    retriveAds();
 
     String? url;
     url = YoutubePlayer.convertUrlToId(widget.shows.videoLink.toString());
