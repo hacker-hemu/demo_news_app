@@ -338,11 +338,25 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
         // enableCaption: true,
       ),
     )..addListener(listener);
+
+    // portrait and landscape both mode is allow in this screen
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   // disposing speaking
   @override
   void dispose() {
+    // when got to another screen then only portrait mode is on
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     controller.dispose();
     super.dispose();
   }

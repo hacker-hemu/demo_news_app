@@ -1,5 +1,6 @@
 import 'package:demo_news_app/screens/tv_screens/all_channels.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../components/ads.dart';
 import '../components/drawer.dart';
@@ -95,6 +96,13 @@ class _TvScreenState extends State<TvScreen> {
     debugPrint('=========== top ads retrieve function called ==============');
     retriveAds();
 
+    // portrait and landscape both mode is allow in this screen
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.initState();
     // 1. This method call when app in terminated state and you get a notification
     // when you click on notification app open from terminated state and you can get notification data in this method
@@ -132,95 +140,107 @@ class _TvScreenState extends State<TvScreen> {
         // drawer TODO: Create a news page for drawer
         drawer: CustomDrawer(),
 
-        body: Container(
-          // color: Color(0xff0c111b),
-          child: Column(
-            children: [
-              // ChewieVideoPlayer(),
+        body: SingleChildScrollView(
+          child: Container(
+            // color: Color(0xff0c111b),
+            child: Column(
+              children: [
+                // ChewieVideoPlayer(),
 
-              SizedBox(
-                height: 5.0,
-              ),
+                SizedBox(
+                  height: 5.0,
+                ),
 
-              // carousel for advertisement
-              _adsList.isEmpty
-                  ?
-                  // static ad image TODO: replace with news image when test ad image is ready
-                  Container(
-                      // width: double.infinity,
-                      child: Card(
-                        elevation: 5.0,
-                        semanticContainer: true,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.asset(
-                                defaultAdImage,
+                // carousel for advertisement
+                _adsList.isEmpty
+                    ?
+                    // static ad image TODO: replace with news image when test ad image is ready
+                    Container(
+                        // width: double.infinity,
+                        child: Card(
+                          elevation: 5.0,
+                          semanticContainer: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image.asset(
+                                  defaultAdImage,
+                                ),
                               ),
-                            ),
 
-                            // carousel title
+                              // carousel title
 
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              bottom: 0,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.black.withOpacity(0),
-                                      Colors.black,
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.black.withOpacity(0),
+                                        Colors.black,
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
                                   ),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10.0,
-                                  vertical: 15.0,
-                                ),
-                                child: const Center(
-                                  child: Text(
-                                    'Ads Title',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0,
+                                    vertical: 15.0,
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Ads Title',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  : Advertisement(loading: _loading, list: _adsList),
+                      )
+                    : Advertisement(loading: _loading, list: _adsList),
 
-              // channels
-              if (_loading)
-                Container(
-                  height:
-                      // MediaQuery.of(context).size.height - 350.0,
-                      300.0,
-                  child: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                )
-              else
-                const AllChannels(),
-            ],
+                // channels
+                if (_loading)
+                  Container(
+                    height:
+                        // MediaQuery.of(context).size.height - 350.0,
+                        300.0,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                else
+                  const AllChannels(),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // when got to another screen then only portrait mode is on
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
   }
 }

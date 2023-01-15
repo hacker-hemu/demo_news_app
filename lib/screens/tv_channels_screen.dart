@@ -254,6 +254,8 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                             ),
                             child: InkWell(
                               onTap: () {
+                                controller
+                                    .pause(); //TODO when go to another screen then pause video then go..
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute<void>(
@@ -300,8 +302,9 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                                             badgeContent: const Text(
                                               'Live',
                                               style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12.0),
+                                                color: Colors.white,
+                                                fontSize: 12.0,
+                                              ),
                                             ),
                                           ),
                                         )
@@ -339,7 +342,7 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
       initialVideoId: url.toString(),
       flags: const YoutubePlayerFlags(
         mute: false,
-        autoPlay: false, //TODO: video autoplay
+        autoPlay: true,
         // disableDragSeek: false,
         // loop: false,
         // isLive: false,
@@ -347,11 +350,26 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
         // enableCaption: true,
       ),
     )..addListener(listener);
+
+    // portrait and landscape both mode is allow in this screen
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   // disposing speaking
   @override
   void dispose() {
+    // when got to another screen then only portrait mode is on
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    controller.pause();
     controller.dispose();
     super.dispose();
   }

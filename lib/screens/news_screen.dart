@@ -9,7 +9,6 @@ import 'package:share_plus/share_plus.dart';
 
 import '../components/ads.dart';
 import '../components/breaking_text_slider.dart';
-import '../components/category.dart';
 import '../components/drawer.dart';
 import '../components/likeCommentShare.dart';
 import '../components/main_news_post_title.dart';
@@ -189,6 +188,8 @@ class _NewsScreenState extends State<NewsScreen> {
   // init state
   @override
   void initState() {
+    super.initState();
+
     debugPrint('=========== news retrieve function called ==============');
     retriveNews();
 
@@ -204,7 +205,6 @@ class _NewsScreenState extends State<NewsScreen> {
 
     debugPrint('=========== push notification function  ==============');
 
-    super.initState();
     // 1. This method call when app in terminated state and you get a notification
     // when you click on notification app open from terminated state and you can get notification data in this method
 
@@ -296,11 +296,6 @@ class _NewsScreenState extends State<NewsScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // vertical space
-                    // const SizedBox(
-                    //   height: 0.0,
-                    // ),
-
                     // News Ticker
                     BuildAnimatedText(
                       startEndWith: '*',
@@ -385,7 +380,8 @@ class _NewsScreenState extends State<NewsScreen> {
                       height: 0.0,
                     ),
 
-                    // Category
+                    // Category TODO: Category commented now
+                    /*
                     _categoryList.length > 0
                         ? Column(
                             children: [
@@ -414,6 +410,8 @@ class _NewsScreenState extends State<NewsScreen> {
                               child: CircularProgressIndicator(),
                             ),
                           ),
+
+*/
 
                     // main news showing Container
                     Container(
@@ -809,15 +807,15 @@ class _NewsScreenState extends State<NewsScreen> {
                                                     }),
                                                 //share
                                                 likeShareComment(
-                                                    label: 'Share',
-                                                    icon:
-                                                        FontAwesomeIcons.share,
-                                                    onPressed: () {
-                                                      Share.share(
-                                                          '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                                                          subject:
-                                                              'Look what I made!');
-                                                    }),
+                                                  label: 'Share',
+                                                  icon: FontAwesomeIcons.share,
+                                                  onPressed: () {
+                                                    Share.share(
+                                                        '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                                                        subject:
+                                                            'Look what I made!');
+                                                  },
+                                                ),
                                               ],
                                             ),
                                           ),
