@@ -11,7 +11,9 @@ import '../../notification/all_notifications_screen.dart';
 import '../../services/ads_service.dart';
 import '../../services/channels_service.dart';
 import '../../services/user_service.dart';
+import '../chewie_video_player.dart';
 import '../login.dart';
+import 'all_shows.dart';
 
 class TvScreen extends StatefulWidget {
   const TvScreen({Key? key}) : super(key: key);
@@ -114,8 +116,9 @@ class _TvScreenState extends State<TvScreen> {
       child: Scaffold(
         // appbar
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
-          backgroundColor: Colors.white,
+          // iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
+          iconTheme: const IconThemeData(color: kAppBarIconLightColor),
+          backgroundColor: kBgAppBarColor,
           centerTitle: true,
           title: Image.asset(
             shortLogoURL,
@@ -142,10 +145,10 @@ class _TvScreenState extends State<TvScreen> {
 
         body: SingleChildScrollView(
           child: Container(
-            // color: Color(0xff0c111b),
+            color: kBgLightColor,
             child: Column(
               children: [
-                // ChewieVideoPlayer(),
+                ChewieVideoPlayer(),
 
                 SizedBox(
                   height: 5.0,
@@ -200,7 +203,7 @@ class _TvScreenState extends State<TvScreen> {
                                       'Ads Title',
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: kTextLightColor,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -226,6 +229,19 @@ class _TvScreenState extends State<TvScreen> {
                   )
                 else
                   const AllChannels(),
+
+                // shows
+                if (_loading)
+                  Container(
+                      // height:
+                      //     // MediaQuery.of(context).size.height - 350.0,
+                      //     300.0,
+                      // child: const Center(
+                      //   child: CircularProgressIndicator(),
+                      // ),
+                      )
+                else
+                  const AllShows(),
               ],
             ),
           ),

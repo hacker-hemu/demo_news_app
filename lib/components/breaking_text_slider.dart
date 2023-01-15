@@ -8,7 +8,7 @@ Widget BuildAnimatedText(
     children: [
       Container(
         width: 90.0,
-        height: 40.0,
+        height: 35.0,
 
         decoration: BoxDecoration(
           // borderRadius: BorderRadius.circular(10),
@@ -48,7 +48,7 @@ Widget BuildAnimatedText(
       Expanded(
         child: Container(
           width: double.maxFinite,
-          height: 40.0,
+          height: 35.0,
           color: textBgColor,
           child: Center(
             child: Marquee(

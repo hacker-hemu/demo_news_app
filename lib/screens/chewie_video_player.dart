@@ -1,6 +1,5 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 class ChewieVideoPlayer extends StatefulWidget {
@@ -28,13 +27,13 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
       videoPlayerController: videoPlayerController!,
       autoPlay: true,
       looping: true,
-      allowFullScreen: false,
+      allowFullScreen: true,
       fullScreenByDefault: false,
       deviceOrientationsAfterFullScreen: [
         // DeviceOrientation.portraitUp,
         // DeviceOrientation.portraitDown,
       ],
-      // showControls: true,
+      showControls: true,
       aspectRatio: 16 / 9,
       showOptions: true,
       autoInitialize: true,

@@ -99,9 +99,9 @@ const newsUserImageURL = '${baseURL}/uploads/user';
 const userImageURL = '';
 const categoryImageURL = '';
 
-// color details
-Color secondaryColor87 = Colors.black.withOpacity(0.5);
-Color secondaryColor45 = Colors.black.withOpacity(0.7);
+// ticker color details
+Color secondaryColor87 = const Color(0xff2f32f4);
+Color secondaryColor45 = const Color(0xff1f00ff);
 
 // sharing information
 //TODO: Replace URL with this app Play Store URL
@@ -121,6 +121,30 @@ const someThingWentWrong = 'Some Thing Went Wrong, Try Again';
 const appName = 'Demo News App';
 const appVersion = '1.0';
 const developerName = 'Hemant Kumar Joshi';
+
+// ------- Tv details  Start -------
+// bg-appBar
+const Color kBgAppBarColor = Colors.black;
+
+// bg-light
+const Color kBgLightColor = Color(0xff212121);
+
+// bg-dark
+const Color kBgDarkColor = Colors.black;
+
+// text-light
+const Color kTextLightColor = Color(0xfffcfcfc);
+
+// text-dark
+const Color kTextDarkColor = Colors.black;
+
+// appBarIcon-light
+const Color kAppBarIconLightColor = Colors.white;
+
+// appBarIcon-dark
+const Color kAppBarIconDarkColor = Colors.black;
+
+// ------- Tv details  End -------
 
 // -------  Form input decoration  -------
 InputDecoration kInputDecoration(String label) {

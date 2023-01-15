@@ -1,43 +1,43 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:demo_news_app/models/shows.dart';
+import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
+import 'package:demo_news_app/services/shows_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 import '../../models/api_response.dart';
-import '../../models/channels.dart';
 import '../../models/user.dart';
-import '../../services/channels_service.dart';
 import '../../services/user_service.dart';
 import '../login.dart';
-import 'tv_channels_screen.dart';
 
-class AllChannels extends StatefulWidget {
-  const AllChannels({Key? key}) : super(key: key);
+class AllShows extends StatefulWidget {
+  const AllShows({Key? key}) : super(key: key);
 
   @override
-  State<AllChannels> createState() => _AllChannelsState();
+  State<AllShows> createState() => _AllShowsState();
 }
 
-class _AllChannelsState extends State<AllChannels> {
-  // save all channels
-  List<dynamic> _channelsList = [];
+class _AllShowsState extends State<AllShows> {
+  // save all shows
+  List<dynamic> _showsList = [];
 
   int userId = 0;
   bool _loading = true;
   User? user;
 
-  // getting all news
-  Future<void> retriveChannels() async {
+  // getting all shows
+  Future<void> retriveShows() async {
     userId = await getUserId();
-    ApiResponse response = await getChannels();
+    ApiResponse response = await getShows();
 
-    print('user id for all channels => $userId');
+    print('user id for all shows => $userId');
 
-    // if no error so get all news in newsList[]
+    // if no error so get all shows[]
     if (response.error == null) {
       setState(() {
-        debugPrint('getting channel data');
+        debugPrint('getting shows data');
 
-        _channelsList = response.data as List<dynamic>;
+        _showsList = response.data as List<dynamic>;
 
         _loading = _loading ? !_loading : _loading;
       });
@@ -59,16 +59,14 @@ class _AllChannelsState extends State<AllChannels> {
   void initState() {
     super.initState();
 
-    debugPrint('=========== all channels retrieve function ==============');
-    retriveChannels();
-    // 1. This method call when app in terminated state and you get a notification
-    // when you click on notification app open from terminated state and you can get notification data in this method
+    debugPrint('=========== all shows retrieve function ==============');
+    retriveShows();
   }
 
   @override
   Widget build(BuildContext context) {
     try {
-      return _channelsList.isNotEmpty
+      return _showsList.isNotEmpty
           ? SingleChildScrollView(
               child: Column(
                 children: [
@@ -77,8 +75,13 @@ class _AllChannelsState extends State<AllChannels> {
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (BuildContext context, int index) {
-                      Channel channels = _channelsList[index];
+                      Shows shows = _showsList[index];
+                      // print('hello');
+                      // print('news image ' +
+                      //     news.newsImages.toString());
                       try {
+                        // print('news image ' +
+                        //     news.newsImages.toString());
                         return InkWell(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +99,7 @@ class _AllChannelsState extends State<AllChannels> {
                                       MainAxisAlignment.spaceBetween,
                                   children: const [
                                     Text(
-                                      'Channels',
+                                      'Shows',
                                       style: TextStyle(
                                           color: kTextLightColor,
                                           fontSize: 15.0,
@@ -112,7 +115,7 @@ class _AllChannelsState extends State<AllChannels> {
                                 ),
                               ),
 
-                              // all channel in slider view
+                              // all shows in slider view
                               SizedBox(
                                 child: _loading
                                     ? Container(
@@ -133,8 +136,8 @@ class _AllChannelsState extends State<AllChannels> {
                                           padEnds: false,
                                         ),
                                         // TODO: change the variable name news to ad when adding advertisement api
-                                        items: _channelsList.map(
-                                          (single_channel) {
+                                        items: _showsList.map(
+                                          (single_show) {
                                             return Builder(
                                               builder: (BuildContext context) {
                                                 try {
@@ -147,9 +150,9 @@ class _AllChannelsState extends State<AllChannels> {
                                                               context) {
                                                             // TODO: redirecting to user_screen
                                                             // return Container();
-                                                            return TvChannelsScreen(
-                                                              channel:
-                                                                  single_channel,
+                                                            return TvShowsScreen(
+                                                              shows:
+                                                                  single_show,
                                                             );
                                                           },
                                                         ),
@@ -167,21 +170,22 @@ class _AllChannelsState extends State<AllChannels> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                              10.0,
-                                                            ),
+                                                                        10.0),
                                                             child:
                                                                 Image.network(
-                                                              single_channel
-                                                                  .image
+                                                              single_show.image
                                                                   .toString(),
                                                               height: 100.0,
+                                                              // width: 100,
                                                               // for error handling
                                                               errorBuilder:
                                                                   (context,
                                                                       error,
                                                                       stackTrace) {
-                                                                return Image.asset(
-                                                                    defaultChannelImage);
+                                                                return Image
+                                                                    .asset(
+                                                                  defaultShowImage,
+                                                                );
                                                               },
 
                                                               // height: double.infinity,
