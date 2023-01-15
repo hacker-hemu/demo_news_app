@@ -1,24 +1,24 @@
 import 'package:badges/badges.dart';
 import 'package:demo_news_app/models/channels.dart';
-import 'package:demo_news_app/screens/tv_screen.dart';
-import 'package:demo_news_app/screens/tv_shows_screen.dart';
+import 'package:demo_news_app/screens/tv_screens/tv_screen.dart';
+import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../components/drawer.dart';
-import '../components/likeCommentShare.dart';
-import '../constants/constants.dart';
-import '../models/api_response.dart';
-import '../models/shows.dart';
-import '../models/user.dart';
-import '../notification/all_notifications_screen.dart';
-import '../services/ads_service.dart';
-import '../services/shows_service.dart';
-import '../services/user_service.dart';
-import 'login.dart';
+import '../../components/drawer.dart';
+import '../../components/likeCommentShare.dart';
+import '../../constants/constants.dart';
+import '../../models/api_response.dart';
+import '../../models/shows.dart';
+import '../../models/user.dart';
+import '../../notification/all_notifications_screen.dart';
+import '../../services/ads_service.dart';
+import '../../services/shows_service.dart';
+import '../../services/user_service.dart';
+import '../login.dart';
 
 class TvChannelsScreen extends StatefulWidget {
   const TvChannelsScreen({Key? key, this.channel}) : super(key: key);
@@ -220,8 +220,9 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                         icon: Icons.share,
                         onPressed: () {
                           Share.share(
-                              'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                              subject: 'Look what I made!');
+                            'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                            subject: 'Look what I made!',
+                          );
                         },
                       ),
                     ],

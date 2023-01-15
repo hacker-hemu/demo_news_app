@@ -5,16 +5,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../components/likeCommentShare.dart';
-import '../constants/constants.dart';
-import '../models/api_response.dart';
-import '../models/shows.dart';
-import '../models/user.dart';
-import '../notification/all_notifications_screen.dart';
-import '../services/ads_service.dart';
-import '../services/shows_service.dart';
-import '../services/user_service.dart';
-import 'login.dart';
+import '../../components/likeCommentShare.dart';
+import '../../constants/constants.dart';
+import '../../models/api_response.dart';
+import '../../models/shows.dart';
+import '../../models/user.dart';
+import '../../notification/all_notifications_screen.dart';
+import '../../services/ads_service.dart';
+import '../../services/shows_service.dart';
+import '../../services/user_service.dart';
+import '../login.dart';
 
 class TvShowsScreen extends StatefulWidget {
   const TvShowsScreen({Key? key, required this.shows}) : super(key: key);

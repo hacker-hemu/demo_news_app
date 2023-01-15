@@ -2,16 +2,16 @@ import 'package:demo_news_app/screens/tv_screens/all_channels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../components/ads.dart';
-import '../components/drawer.dart';
-import '../constants/constants.dart';
-import '../models/api_response.dart';
-import '../models/user.dart';
-import '../notification/all_notifications_screen.dart';
-import '../services/ads_service.dart';
-import '../services/channels_service.dart';
-import '../services/user_service.dart';
-import 'login.dart';
+import '../../components/ads.dart';
+import '../../components/drawer.dart';
+import '../../constants/constants.dart';
+import '../../models/api_response.dart';
+import '../../models/user.dart';
+import '../../notification/all_notifications_screen.dart';
+import '../../services/ads_service.dart';
+import '../../services/channels_service.dart';
+import '../../services/user_service.dart';
+import '../login.dart';
 
 class TvScreen extends StatefulWidget {
   const TvScreen({Key? key}) : super(key: key);

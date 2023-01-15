@@ -8,7 +8,7 @@ import '../../models/user.dart';
 import '../../services/channels_service.dart';
 import '../../services/user_service.dart';
 import '../login.dart';
-import '../tv_channels_screen.dart';
+import 'tv_channels_screen.dart';
 
 class AllChannels extends StatefulWidget {
   const AllChannels({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:demo_news_app/screens/epaper_screen.dart';
 import 'package:demo_news_app/screens/news_screen.dart';
 import 'package:demo_news_app/screens/profile.dart';
-import 'package:demo_news_app/screens/tv_screen.dart';
+import 'package:demo_news_app/screens/tv_screens/tv_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'news_create_screen.dart';
