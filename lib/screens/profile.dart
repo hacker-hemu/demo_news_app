@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demo_news_app/models/api_response.dart';
 import 'package:demo_news_app/screens/show_single_news.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../constants/constants.dart';
@@ -529,8 +528,14 @@ class _ProfileState extends State<Profile> {
                                             return Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                color: Colors.white,
+                                                    BorderRadius.circular(
+                                                  5.0,
+                                                ),
+                                                color: userNews.approved == '1'
+                                                    ? Colors.green
+                                                        .withOpacity(0.4)
+                                                    : Colors.red
+                                                        .withOpacity(0.4),
                                               ),
                                               margin:
                                                   const EdgeInsets.symmetric(
@@ -541,303 +546,179 @@ class _ProfileState extends State<Profile> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  userNews.newsImages == null
-                                                      ?
-
-                                                      // news single image
-                                                      InkWell(
-                                                          onTap: () {
-                                                            userNews.approved ==
-                                                                    '1'
-                                                                ? Navigator
-                                                                    .push(
-                                                                    context,
-                                                                    MaterialPageRoute<
-                                                                        void>(
-                                                                      builder:
-                                                                          (BuildContext
-                                                                              context) {
-                                                                        // TODO: redirecting to user_screen
-                                                                        return ShowSingleNews(
-                                                                          news:
-                                                                              userNews,
-                                                                        );
-                                                                      },
-                                                                    ),
-                                                                  )
-                                                                : null;
-                                                          },
-                                                          child: Stack(
-                                                            children: [
-                                                              Container(
-                                                                margin:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            5.0),
-                                                                child: Row(
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    // text section
-                                                                    Column(
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        // icon for approved or not
-                                                                        IconButton(
-                                                                          onPressed:
-                                                                              () {},
-                                                                          icon: FaIcon(userNews.approved == '1'
-                                                                              ? FontAwesomeIcons.solidCircleCheck
-                                                                              : FontAwesomeIcons.solidCircleXmark),
-                                                                          iconSize:
-                                                                              20.0,
-                                                                          color: userNews.approved == '1'
-                                                                              ? Colors.green
-                                                                              : Colors.red,
-                                                                        ),
-
-                                                                        // news title
-                                                                        Container(
-                                                                          width:
-                                                                              210.0,
-                                                                          height:
-                                                                              40.0,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15.0),
-                                                                          ),
-                                                                          padding:
-                                                                              const EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                10.0,
-                                                                          ),
-                                                                          child:
-                                                                              Text(
-                                                                            '${userNews.title}',
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            maxLines:
-                                                                                2,
-                                                                            style:
-                                                                                const TextStyle(
-                                                                              color: Colors.black87,
-                                                                              fontSize: 15.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-
-                                                                    // image section
-                                                                    ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              15.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        '${userNews.image}',
-                                                                        height:
-                                                                            80.0,
-                                                                        width:
-                                                                            130.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-
-                                                                        // for error handling
-                                                                        errorBuilder: (context,
-                                                                            error,
-                                                                            stackTrace) {
-                                                                          print(
-                                                                              error);
-
-                                                                          // when network image does not load proper so show local image
-                                                                          // return Image.asset(
-                                                                          //     'assets/images/news_default_image.jpg');
-
-                                                                          return const SizedBox(
-                                                                            height:
-                                                                                230.0,
-                                                                            child:
-                                                                                Center(child: CircularProgressIndicator()),
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        )
-                                                      :
-                                                      // news multiple image
-                                                      InkWell(
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute<
-                                                                  void>(
-                                                                builder:
-                                                                    (BuildContext
-                                                                        context) {
-                                                                  // TODO: redirecting to user_screen
-                                                                  return ShowSingleNews(
-                                                                    news:
-                                                                        userNews,
-                                                                  );
-                                                                },
-                                                              ),
+                                                  // news multiple image
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute<void>(
+                                                          builder: (BuildContext
+                                                              context) {
+                                                            // TODO: redirecting to single news screen
+                                                            return ShowSingleNews(
+                                                              news: userNews,
                                                             );
                                                           },
-                                                          child: Row(
-                                                            children: [
-                                                              // text section
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  // icon for approved or not
-                                                                  IconButton(
-                                                                    onPressed:
-                                                                        () {},
-                                                                    icon: FaIcon(userNews
-                                                                                .approved ==
-                                                                            '1'
-                                                                        ? FontAwesomeIcons
-                                                                            .solidCircleCheck
-                                                                        : FontAwesomeIcons
-                                                                            .solidCircleXmark),
-                                                                    iconSize:
-                                                                        20.0,
-                                                                    color: userNews
-                                                                                .approved ==
-                                                                            '1'
-                                                                        ? Colors
-                                                                            .green
-                                                                        : Colors
-                                                                            .red,
-                                                                  ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Row(
+                                                      children: [
+                                                        // image section
+                                                        Container(
+                                                          width: 140.0,
+                                                          height: 78.75,
+                                                          child: CarouselSlider(
+                                                            options:
+                                                                CarouselOptions(
+                                                              height: 78.75,
+                                                              viewportFraction:
+                                                                  1,
+                                                              autoPlay: false,
+                                                            ),
+                                                            // TODO: change the variable name news to ad when adding advertisement api
 
-                                                                  // news title
-                                                                  Container(
-                                                                    width:
-                                                                        210.0,
-                                                                    height:
-                                                                        40.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              15.0),
-                                                                    ),
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                            .symmetric(
-                                                                      horizontal:
-                                                                          10.0,
-                                                                    ),
-                                                                    child: Text(
-                                                                      '${userNews.title}',
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                      maxLines:
-                                                                          2,
-                                                                      style:
-                                                                          const TextStyle(
-                                                                        color: Colors
-                                                                            .black87,
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
+                                                            items: userNews
+                                                                        .newsImages ==
+                                                                    null
+                                                                ? [
+                                                                    Image.asset(
+                                                                        defaultNewsImage),
+                                                                  ]
+                                                                : userNews
+                                                                    .newsImages
+                                                                    ?.map(
+                                                                      (imageUrl) =>
+                                                                          Card(
+                                                                        margin:
+                                                                            const EdgeInsets.symmetric(
+                                                                          horizontal:
+                                                                              5.0,
+                                                                          vertical:
+                                                                              5.0,
+                                                                        ),
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(5.0),
+                                                                        ),
+                                                                        elevation:
+                                                                            1.0,
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(5.0),
+                                                                              child: Image.network(
+                                                                                '${imageUrl}',
 
-                                                              // image section
-                                                              Container(
-                                                                width: 140.0,
-                                                                child:
-                                                                    CarouselSlider(
-                                                                  options:
-                                                                      CarouselOptions(
-                                                                    height:
-                                                                        90.0,
-                                                                    viewportFraction:
-                                                                        1,
-                                                                    autoPlay:
-                                                                        true,
-                                                                  ),
-                                                                  // TODO: change the variable name news to ad when adding advertisment api
+                                                                                width: 140.0,
+                                                                                height: 78.75,
+                                                                                fit: BoxFit.cover,
 
-                                                                  items: userNews
-                                                                              .newsImages ==
-                                                                          null
-                                                                      ? [
-                                                                          Image.asset(
-                                                                              'assets/images/popular.png'),
-                                                                        ]
-                                                                      : userNews
-                                                                          .newsImages
-                                                                          ?.map(
-                                                                            (imageUrl) =>
-                                                                                Card(
-                                                                              margin: const EdgeInsets.symmetric(
-                                                                                horizontal: 5.0,
-                                                                                vertical: 5.0,
-                                                                              ),
-                                                                              shape: RoundedRectangleBorder(
-                                                                                borderRadius: BorderRadius.circular(15.0),
-                                                                              ),
-                                                                              elevation: 1.0,
-                                                                              child: Stack(
-                                                                                children: [
-                                                                                  ClipRRect(
-                                                                                    borderRadius: BorderRadius.circular(15.0),
-                                                                                    child: Image.network(
-                                                                                      '${imageUrl}',
+                                                                                // for error handling
+                                                                                errorBuilder: (context, error, stackTrace) {
+                                                                                  print(error);
 
-                                                                                      height: 90.0,
-                                                                                      width: 130.0,
-                                                                                      fit: BoxFit.cover,
+                                                                                  // when network image does not load proper so show local image
+                                                                                  return Image.asset(defaultNewsImage);
 
-                                                                                      // for error handling
-                                                                                      errorBuilder: (context, error, stackTrace) {
-                                                                                        print(error);
-
-                                                                                        // when network image does not load proper so show local image
-                                                                                        // return Image.asset(
-                                                                                        //     'assets/images/news_default_image.jpg');
-
-                                                                                        return const SizedBox(
-                                                                                          height: 230.0,
-                                                                                          child: Center(child: CircularProgressIndicator()),
-                                                                                        );
-                                                                                      },
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
+                                                                                  // return const SizedBox(
+                                                                                  //
+                                                                                  //   height: 230.0,
+                                                                                  //   child: Center(child: CircularProgressIndicator()),
+                                                                                  // );
+                                                                                },
                                                                               ),
                                                                             ),
-                                                                          )
-                                                                          .toList(),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                    .toList(),
                                                           ),
                                                         ),
+
+                                                        // text section
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            // category name
+                                                            Visibility(
+                                                              visible: false,
+                                                              child: Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              3.0),
+                                                                ),
+                                                                height: 20.0,
+                                                                width: 80.0,
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    userNews
+                                                                        .categoryName
+                                                                        .toString(),
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+                                                            // news title
+                                                            Container(
+                                                              width: 210.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              ),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                horizontal:
+                                                                    10.0,
+                                                              ),
+                                                              child: Text(
+                                                                '${userNews.title}',
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                maxLines: 3,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  fontSize:
+                                                                      14.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             );
+                                            ;
                                           } catch (e) {
                                             print(e);
                                             return Container();

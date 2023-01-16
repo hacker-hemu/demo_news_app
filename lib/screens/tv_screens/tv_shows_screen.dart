@@ -254,18 +254,6 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                             fontSize: 18.0,
                           ),
                         ),
-                        // category badge
-                        Badge(
-                          padding: EdgeInsets.symmetric(horizontal: 5.0),
-                          animationType: BadgeAnimationType.fade,
-                          shape: BadgeShape.square,
-                          borderRadius: BorderRadius.circular(4),
-                          badgeColor: Theme.of(context).primaryColor,
-                          badgeContent: Text(
-                            ' ${show.id.toString()} ', //TODO add channel name in api field
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
                       ],
                     ),
                   ),

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../components/ads.dart';
@@ -171,30 +170,33 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
             //share
             likeShareComment(
                 label: '',
-                icon: FontAwesomeIcons.shareNodes,
+                icon: Icons.share,
                 iconColor: Colors.white,
                 onPressed: () {
                   Share.share(
                       '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
                       subject: 'Look what I made!');
-                }),
+                },
+                iconSize: 20.0),
           ],
         ),
 
-        // floating action button text to speech
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            isSpeaking = !isSpeaking;
+        // floating action button text to speech TODO: hide text to speech with 1 == 2 condition
+        floatingActionButton: 1 == 2
+            ? FloatingActionButton(
+                onPressed: () {
+                  isSpeaking = !isSpeaking;
 
-            setState(() {
-              isSpeaking == true
-                  ? speak(
-                      '${news.title ?? ''}, ${news.news_desc ?? ''}, ${news.content != null ? news.content.toString().replaceAll(regExp, ' ') : ''}')
-                  : stopSpeaking();
-            });
-          },
-          child: Icon(isSpeaking ? Icons.mic_off_sharp : Icons.mic_sharp),
-        ),
+                  setState(() {
+                    isSpeaking == true
+                        ? speak(
+                            '${news.title ?? ''}, ${news.news_desc ?? ''}, ${news.content != null ? news.content.toString().replaceAll(regExp, ' ') : ''}')
+                        : stopSpeaking();
+                  });
+                },
+                child: Icon(isSpeaking ? Icons.mic_off_sharp : Icons.mic_sharp),
+              )
+            : Container(),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,29 +233,29 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                     ),
 
                     // total views
-                    Container(
-                      height: 40.0,
-                      width: 80.0,
-                      decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(25.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(
-                            Icons.remove_red_eye_outlined,
-                            color:
-                                Theme.of(context).primaryColor.withOpacity(0.5),
-                          ),
-                          const Text(
-                            '567',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15.0),
-                          )
-                        ],
-                      ),
-                    )
+                    // Container(
+                    //   height: 40.0,
+                    //   width: 80.0,
+                    //   decoration: BoxDecoration(
+                    //       color:
+                    //           Theme.of(context).primaryColor.withOpacity(0.2),
+                    //       borderRadius: BorderRadius.circular(25.0)),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //     children: [
+                    //       Icon(
+                    //         Icons.remove_red_eye_outlined,
+                    //         color:
+                    //             Theme.of(context).primaryColor.withOpacity(0.5),
+                    //       ),
+                    //       const Text(
+                    //         '567',
+                    //         style: TextStyle(
+                    //             fontWeight: FontWeight.bold, fontSize: 15.0),
+                    //       )
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ),
               ),
@@ -549,7 +551,7 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
 
                     _newsList.isNotEmpty
                         ?
-                        // main news showing Container
+                        // related news showing Container
                         Column(
                             children: [
                               newsCategoryName(
@@ -585,7 +587,8 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              15.0),
+                                                        5.0,
+                                                      ),
                                                       color: Colors.white,
                                                     ),
                                                     margin: const EdgeInsets
@@ -598,278 +601,175 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        reletedNews.newsImages ==
-                                                                null
-                                                            ?
-
-                                                            // news single image
-                                                            InkWell(
-                                                                onTap: () {
-                                                                  reletedNews.approved ==
-                                                                          '1'
-                                                                      ? Navigator
-                                                                          .push(
-                                                                          context,
-                                                                          MaterialPageRoute<
-                                                                              void>(
-                                                                            builder:
-                                                                                (BuildContext context) {
-                                                                              // TODO: redirecting to user_screen
-                                                                              return ShowSingleNews(
-                                                                                news: reletedNews,
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        )
-                                                                      : null;
-                                                                },
-                                                                child: Stack(
-                                                                  children: [
-                                                                    Container(
-                                                                      margin: EdgeInsets
-                                                                          .all(
-                                                                              5.0),
-                                                                      child:
-                                                                          Row(
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.center,
-                                                                        children: [
-                                                                          // text section
-                                                                          Column(
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
-                                                                            children: [
-                                                                              // category name
-                                                                              Container(
-                                                                                decoration: BoxDecoration(
-                                                                                  color: Theme.of(context).primaryColor,
-                                                                                  borderRadius: BorderRadius.circular(3.0),
-                                                                                ),
-                                                                                height: 20.0,
-                                                                                width: 80.0,
-                                                                                child: Center(
-                                                                                  child: Text(
-                                                                                    news.categoryName.toString(),
-                                                                                    style: TextStyle(
-                                                                                      color: Colors.white,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-
-                                                                              // news title
-                                                                              Container(
-                                                                                width: 210.0,
-                                                                                height: 40.0,
-                                                                                decoration: BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(15.0),
-                                                                                ),
-                                                                                padding: const EdgeInsets.symmetric(
-                                                                                  horizontal: 10.0,
-                                                                                ),
-                                                                                child: Text(
-                                                                                  '${reletedNews.title}',
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  maxLines: 2,
-                                                                                  style: const TextStyle(
-                                                                                    color: Colors.black87,
-                                                                                    fontSize: 15.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-
-                                                                          // image section
-                                                                          ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15.0),
-                                                                            child:
-                                                                                Image.network(
-                                                                              '${reletedNews.image}',
-                                                                              height: 80.0,
-                                                                              width: 130.0,
-                                                                              fit: BoxFit.cover,
-
-                                                                              // for error handling
-                                                                              errorBuilder: (context, error, stackTrace) {
-                                                                                print(error);
-
-                                                                                // when network image does not load proper so show local image
-                                                                                // return Image.asset(
-                                                                                //     'assets/images/news_default_image.jpg');
-
-                                                                                return const SizedBox(
-                                                                                  height: 230.0,
-                                                                                  child: Center(child: CircularProgressIndicator()),
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            :
-                                                            // news multiple image
-                                                            InkWell(
-                                                                onTap: () {
-                                                                  Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute<
-                                                                        void>(
-                                                                      builder:
-                                                                          (BuildContext
-                                                                              context) {
-                                                                        // TODO: redirecting to user_screen
-                                                                        return ShowSingleNews(
-                                                                          news:
-                                                                              reletedNews,
-                                                                        );
-                                                                      },
-                                                                    ),
+                                                        // news multiple image
+                                                        InkWell(
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute<
+                                                                  void>(
+                                                                builder:
+                                                                    (BuildContext
+                                                                        context) {
+                                                                  // TODO: redirecting to single news screen
+                                                                  return ShowSingleNews(
+                                                                    news: news,
                                                                   );
                                                                 },
-                                                                child: Row(
-                                                                  children: [
-                                                                    // text section
-                                                                    Column(
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        // category name
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Theme.of(context).primaryColor,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(3.0),
-                                                                          ),
-                                                                          height:
-                                                                              20.0,
-                                                                          width:
-                                                                              80.0,
-                                                                          child:
-                                                                              Center(
-                                                                            child:
-                                                                                Text(
-                                                                              news.categoryName.toString(),
-                                                                              style: TextStyle(
-                                                                                color: Colors.white,
+                                                              ),
+                                                            );
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              // image section
+                                                              Container(
+                                                                width: 140.0,
+                                                                height: 78.75,
+                                                                child:
+                                                                    CarouselSlider(
+                                                                  options:
+                                                                      CarouselOptions(
+                                                                    height:
+                                                                        78.75,
+                                                                    viewportFraction:
+                                                                        1,
+                                                                    autoPlay:
+                                                                        false,
+                                                                  ),
+                                                                  // TODO: change the variable name news to ad when adding advertisement api
+
+                                                                  items: reletedNews
+                                                                              .newsImages ==
+                                                                          null
+                                                                      ? [
+                                                                          Image.asset(
+                                                                              defaultNewsImage),
+                                                                        ]
+                                                                      : reletedNews
+                                                                          .newsImages
+                                                                          ?.map(
+                                                                            (imageUrl) =>
+                                                                                Card(
+                                                                              margin: const EdgeInsets.symmetric(
+                                                                                horizontal: 5.0,
+                                                                                vertical: 5.0,
                                                                               ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                              shape: RoundedRectangleBorder(
+                                                                                borderRadius: BorderRadius.circular(5.0),
+                                                                              ),
+                                                                              elevation: 1.0,
+                                                                              child: Stack(
+                                                                                children: [
+                                                                                  ClipRRect(
+                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                    child: Image.network(
+                                                                                      '${imageUrl}',
 
-                                                                        // news title
-                                                                        Container(
-                                                                          width:
-                                                                              210.0,
-                                                                          height:
-                                                                              40.0,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15.0),
-                                                                          ),
-                                                                          padding:
-                                                                              const EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                10.0,
-                                                                          ),
-                                                                          child:
-                                                                              Text(
-                                                                            '${reletedNews.title}',
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            maxLines:
-                                                                                2,
-                                                                            style:
-                                                                                const TextStyle(
-                                                                              color: Colors.black87,
-                                                                              fontSize: 15.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
+                                                                                      width: 140.0,
+                                                                                      height: 78.75,
+                                                                                      fit: BoxFit.cover,
 
-                                                                    // image section
-                                                                    Container(
-                                                                      width:
-                                                                          140.0,
-                                                                      child:
-                                                                          CarouselSlider(
-                                                                        options:
-                                                                            CarouselOptions(
-                                                                          height:
-                                                                              90.0,
-                                                                          viewportFraction:
-                                                                              1,
-                                                                          autoPlay:
-                                                                              true,
-                                                                        ),
-                                                                        // TODO: change the variable name news to ad when adding advertisment api
+                                                                                      // for error handling
+                                                                                      errorBuilder: (context, error, stackTrace) {
+                                                                                        print(error);
 
-                                                                        items: reletedNews.newsImages ==
-                                                                                null
-                                                                            ? [
-                                                                                Image.asset('assets/images/popular.png'),
-                                                                              ]
-                                                                            : reletedNews.newsImages
-                                                                                ?.map(
-                                                                                  (imageUrl) => Card(
-                                                                                    margin: const EdgeInsets.symmetric(
-                                                                                      horizontal: 5.0,
-                                                                                      vertical: 5.0,
-                                                                                    ),
-                                                                                    shape: RoundedRectangleBorder(
-                                                                                      borderRadius: BorderRadius.circular(15.0),
-                                                                                    ),
-                                                                                    elevation: 1.0,
-                                                                                    child: Stack(
-                                                                                      children: [
-                                                                                        ClipRRect(
-                                                                                          borderRadius: BorderRadius.circular(15.0),
-                                                                                          child: Image.network(
-                                                                                            '${imageUrl}',
+                                                                                        // when network image does not load proper so show local image
+                                                                                        return Image.asset(defaultNewsImage);
 
-                                                                                            height: 90.0,
-                                                                                            width: 130.0,
-                                                                                            fit: BoxFit.cover,
-
-                                                                                            // for error handling
-                                                                                            errorBuilder: (context, error, stackTrace) {
-                                                                                              print(error);
-
-                                                                                              // when network image does not load proper so show local image
-                                                                                              // return Image.asset(
-                                                                                              //     'assets/images/news_default_image.jpg');
-
-                                                                                              return const SizedBox(
-                                                                                                height: 230.0,
-                                                                                                child: Center(child: CircularProgressIndicator()),
-                                                                                              );
-                                                                                            },
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
+                                                                                        // return const SizedBox(
+                                                                                        //
+                                                                                        //   height: 230.0,
+                                                                                        //   child: Center(child: CircularProgressIndicator()),
+                                                                                        // );
+                                                                                      },
                                                                                     ),
                                                                                   ),
-                                                                                )
-                                                                                .toList(),
-                                                                      ),
-                                                                    ),
-                                                                  ],
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                          .toList(),
                                                                 ),
                                                               ),
+
+                                                              // text section
+                                                              Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  // category name
+                                                                  Visibility(
+                                                                    visible:
+                                                                        false,
+                                                                    child:
+                                                                        Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Theme.of(context)
+                                                                            .primaryColor,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(3.0),
+                                                                      ),
+                                                                      height:
+                                                                          20.0,
+                                                                      width:
+                                                                          80.0,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          news.categoryName
+                                                                              .toString(),
+                                                                          style:
+                                                                              const TextStyle(
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // news title
+                                                                  Container(
+                                                                    width:
+                                                                        210.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5.0),
+                                                                    ),
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                            .symmetric(
+                                                                      horizontal:
+                                                                          10.0,
+                                                                    ),
+                                                                    child: Text(
+                                                                      '${news.title}',
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      maxLines:
+                                                                          3,
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        color: Colors
+                                                                            .black87,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ],
                                                     ),
                                                   )
