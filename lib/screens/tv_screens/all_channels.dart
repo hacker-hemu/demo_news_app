@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 import '../../models/api_response.dart';
-import '../../models/channels.dart';
+import '../../models/tv_models/channels.dart';
 import '../../models/user.dart';
-import '../../services/channels_service.dart';
+import '../../services/tv_services/channels_service.dart';
 import '../../services/user_service.dart';
 import '../login.dart';
 import 'tv_channels_screen.dart';

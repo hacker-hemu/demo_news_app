@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demo_news_app/models/shows.dart';
+import 'package:demo_news_app/models/tv_models/shows.dart';
 import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
-import 'package:demo_news_app/services/shows_service.dart';
+import 'package:demo_news_app/services/tv_services/shows_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';

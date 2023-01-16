@@ -1,4 +1,4 @@
-import 'package:demo_news_app/models/shows.dart';
+import 'package:demo_news_app/models/tv_models/shows.dart';
 
 class Channel {
   int? id;

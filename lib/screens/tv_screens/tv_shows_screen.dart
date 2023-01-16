@@ -9,11 +9,11 @@ import '../../components/ads.dart';
 import '../../components/likeCommentShare.dart';
 import '../../constants/constants.dart';
 import '../../models/api_response.dart';
-import '../../models/shows.dart';
+import '../../models/tv_models/shows.dart';
 import '../../models/user.dart';
 import '../../notification/all_notifications_screen.dart';
 import '../../services/ads_service.dart';
-import '../../services/shows_service.dart';
+import '../../services/tv_services/shows_service.dart';
 import '../../services/user_service.dart';
 import '../login.dart';
 

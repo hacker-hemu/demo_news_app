@@ -1,43 +1,48 @@
-import 'package:demo_news_app/models/user.dart';
+import 'package:demo_news_app/models/tv_models/shows.dart';
 
-import 'news_category.dart';
-
-class Shows {
+class RecommendedChannels {
   int? id;
   String? name;
   String? title;
   String? videLink;
   String? image;
-  int? isLive;
+  int? isPopular;
+  int? isRecommended;
+  // List<dynamic>? breakingNewsTitle;
   List<dynamic>? newsImages;
   String? videoLink;
-  int? channelId;
+  String? categoryName;
+  Shows? shows;
 
-  Shows({
+  RecommendedChannels({
     this.id,
     this.name,
     this.title,
     this.image,
-    this.isLive,
+    this.isPopular,
+    this.isRecommended,
     this.newsImages,
+    // this.breakingNewsTitle,
     this.videoLink,
-    this.channelId,
+    this.categoryName,
+    this.shows,
   });
 
   // function to convert json to user model
-  factory Shows.fromJson(Map<String, dynamic> json) {
+  factory RecommendedChannels.fromJson(Map<String, dynamic> json) {
     // print('model title is ' + json['title']);
     // print('model images is ' + json['news_image'].toString());
-    return Shows(
+    return RecommendedChannels(
       id: json['id'],
       name: json['name'],
       title: json['title'],
       image: json['image'],
-      isLive: json['is_live'],
+      isPopular: json['is_popular'],
+      isRecommended: json['is_recommended'],
       newsImages: json['news_image'],
       // breakingNewsTitle: json['breaking_news_title'],
       videoLink: json['video_link'],
-      channelId: json['channel_id'],
+      categoryName: json['category_name'],
     );
   }
 }

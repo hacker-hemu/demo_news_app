@@ -64,8 +64,13 @@ const userNewsURL = '$baseURL/api/userNews';
 const videoNewsURL = '$baseURL/api/videoNews';
 const EpaperNewsURL = '$baseURL/api/epapers';
 const commentsURL = '$baseURL/api/comments';
+
+// channels
 const channelsURL = '$baseURL/api/channels';
+const recommendedChannelsURL = '$baseURL/api/recommendedChannels';
+const popularChannelsURL = '$baseURL/api/popularChannels';
 const sportsChannelsURL = '$baseURL/api/sports_channels';
+
 const showsURL = '$baseURL/api/shows';
 const partsURL = '$baseURL/api/parts';
 

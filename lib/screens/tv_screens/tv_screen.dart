@@ -9,7 +9,7 @@ import '../../models/api_response.dart';
 import '../../models/user.dart';
 import '../../notification/all_notifications_screen.dart';
 import '../../services/ads_service.dart';
-import '../../services/channels_service.dart';
+import '../../services/tv_services/channels_service.dart';
 import '../../services/user_service.dart';
 import '../chewie_video_player.dart';
 import '../login.dart';

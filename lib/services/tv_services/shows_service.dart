@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:demo_news_app/services/user_service.dart';
 import 'package:http/http.dart' as http;
 
-import '../constants/constants.dart';
-import '../models/api_response.dart';
-import '../models/channels.dart';
+import '../../constants/constants.dart';
+import '../../models/api_response.dart';
+import '../../models/tv_models/shows.dart';
 
 // get all news
-Future<ApiResponse> getChannels() async {
+Future<ApiResponse> getShows() async {
   ApiResponse apiResponse = ApiResponse();
   try {
     String token = await getToken();
-    final response = await http.get(Uri.parse(channelsURL), headers: {
+    final response = await http.get(Uri.parse(showsURL), headers: {
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',
 
@@ -29,8 +29,8 @@ Future<ApiResponse> getChannels() async {
     switch (response.statusCode) {
       case 200:
         // apiResponse.data = jsonDecode(response.body);
-        apiResponse.data = jsonDecode(response.body)['channels']
-            .map((p) => Channel.fromJson(p))
+        apiResponse.data = jsonDecode(response.body)['shows']
+            .map((p) => Shows.fromJson(p))
             .toList();
 
         // getting list of news so we need to map for each item to News model
