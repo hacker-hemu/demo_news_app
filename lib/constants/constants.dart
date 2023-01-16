@@ -96,8 +96,7 @@ const cityURL = '$baseURL/api/city';
 const shortLogoURL = 'assets/images/logoShort.png';
 const defaultAdImage = 'assets/images/default_ad_image.jpg';
 
-//TODO: change image path when default news image is available
-const defaultNewsImage = 'assets/images/default_ad_image.jpg';
+const defaultNewsImage = 'assets/images/news_default_image.jpg';
 
 const defaultCategoryImage = 'assets/images/defaultCategoryImage.png';
 
@@ -118,9 +117,9 @@ Color secondaryColor45 = const Color(0xff1f00ff);
 //TODO: Replace URL with this app Play Store URL
 // playStore aap URL
 const playStoreAppLink =
-    'https://play.google.com/store/apps/details?id=com.technolab.demo_news_app';
+    'https://play.google.com/store/apps/details?id=com.tv.popular';
 
-const clientMobileNumber = '1234567890';
+const clientMobileNumber = '9610448066';
 const clientEmail = 'demmonewsapp@example.com';
 
 // -------  Errors  -------

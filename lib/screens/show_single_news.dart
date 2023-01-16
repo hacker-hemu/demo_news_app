@@ -208,7 +208,7 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
 
               // carousel for advertisement
               _adsList.isEmpty
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Advertisement(loading: _loading, list: _adsList),
 
               // vertical space

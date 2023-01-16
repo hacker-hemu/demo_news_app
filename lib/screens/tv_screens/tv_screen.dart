@@ -160,63 +160,7 @@ class _TvScreenState extends State<TvScreen> {
                 _adsList.isEmpty
                     ?
                     // static ad image TODO: replace with news image when test ad image is ready
-                    Container(
-                        // width: double.infinity,
-                        child: Card(
-                          elevation: 5.0,
-                          semanticContainer: true,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: Image.asset(
-                                  defaultAdImage,
-                                ),
-                              ),
-
-                              // carousel title
-
-                              Positioned(
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.black.withOpacity(0),
-                                        Colors.black,
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0,
-                                    vertical: 15.0,
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Ads Title',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        color: kTextLightColor,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
+                    Container()
                     : Advertisement(loading: _loading, list: _adsList),
 
                 // recommended channels
