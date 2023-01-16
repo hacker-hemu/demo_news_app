@@ -532,8 +532,11 @@ class _ProfileState extends State<Profile> {
                                                   5.0,
                                                 ),
                                                 color: userNews.approved == '1'
-                                                    ? Colors.green
-                                                        .withOpacity(0.4)
+                                                    ? userNews.status == 1
+                                                        ? Colors.green
+                                                            .withOpacity(0.4)
+                                                        : Colors.red
+                                                            .withOpacity(0.4)
                                                     : Colors.red
                                                         .withOpacity(0.4),
                                               ),

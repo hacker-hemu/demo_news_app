@@ -29,6 +29,7 @@ class News {
   String? loggedInUserDistrict;
   String? loggedInUserCity;
   String? videoLink;
+  int? status;
 
   News({
     this.id,
@@ -57,6 +58,7 @@ class News {
     this.loggedInUserDistrict,
     this.loggedInUserCity,
     this.videoLink,
+    this.status,
   });
 
   // function to convert json to user model
@@ -98,6 +100,7 @@ class News {
       loggedInUserDistrict: json['loggedInUserDistrict'],
       loggedInUserCity: json['loggedInUserCity'],
       videoLink: json['video_link'],
+      status: json['status'],
     );
   }
 }
