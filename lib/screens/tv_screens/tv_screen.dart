@@ -100,8 +100,8 @@ class _TvScreenState extends State<TvScreen> {
 
     // portrait and landscape both mode is allow in this screen
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
+      // DeviceOrientation.landscapeRight,
+      // DeviceOrientation.landscapeLeft,
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
