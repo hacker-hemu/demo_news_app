@@ -340,6 +340,9 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.network(
                                 '${news.image}',
+                                height: 230.0,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
 
                                 // for error handling
                                 errorBuilder: (context, error, stackTrace) {
@@ -349,15 +352,15 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                                   // return Image.asset(
                                   //     'assets/images/news_default_image.jpg');
 
-                                  return const SizedBox(
-                                    height: 230.0,
-                                    child: Center(
-                                        child: CircularProgressIndicator()),
+                                  return SizedBox(
+                                    child: Image.asset(
+                                      defaultNewsImage,
+                                      height: 230.0,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
                                   );
                                 },
-                                height: 230.0,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
                               ),
                             ),
                           ],
