@@ -1,43 +1,42 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demo_news_app/models/tv_models/shows.dart';
-import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
-import 'package:demo_news_app/services/tv_services/shows_service.dart';
+import 'package:demo_news_app/screens/tv_screens/tv_popular_channels_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 import '../../models/api_response.dart';
 import '../../models/user.dart';
+import '../../services/tv_services/popular_channels_service.dart';
 import '../../services/user_service.dart';
 import '../login.dart';
 
-class AllShows extends StatefulWidget {
-  const AllShows({Key? key}) : super(key: key);
+class PopularChannels extends StatefulWidget {
+  const PopularChannels({Key? key}) : super(key: key);
 
   @override
-  State<AllShows> createState() => _AllShowsState();
+  State<PopularChannels> createState() => _PopularChannelsState();
 }
 
-class _AllShowsState extends State<AllShows> {
-  // save all shows
-  List<dynamic> _showsList = [];
+class _PopularChannelsState extends State<PopularChannels> {
+  // save popular channels
+  List<dynamic> _popularChannelsList = [];
 
   int userId = 0;
   bool _loading = true;
   User? user;
 
-  // getting all shows
-  Future<void> retriveShows() async {
+  // getting all popular channels
+  Future<void> retrievePopularChannels() async {
     userId = await getUserId();
-    ApiResponse response = await getShows();
+    ApiResponse response = await getPopularChannels();
 
-    print('user id for all shows => $userId');
+    print('user id for popular channels => $userId');
 
-    // if no error so get all shows[]
+    // if no error so get all popular channels
     if (response.error == null) {
       setState(() {
-        debugPrint('getting shows data');
+        debugPrint('getting popular channel data');
 
-        _showsList = response.data as List<dynamic>;
+        _popularChannelsList = response.data as List<dynamic>;
 
         _loading = _loading ? !_loading : _loading;
       });
@@ -59,14 +58,14 @@ class _AllShowsState extends State<AllShows> {
   void initState() {
     super.initState();
 
-    debugPrint('=========== all shows retrieve function ==============');
-    retriveShows();
+    debugPrint('=========== popular channels retrieve function ==============');
+    retrievePopularChannels();
   }
 
   @override
   Widget build(BuildContext context) {
     try {
-      return _showsList.isNotEmpty
+      return _popularChannelsList.isNotEmpty
           ? SingleChildScrollView(
               child: Column(
                 children: [
@@ -75,13 +74,7 @@ class _AllShowsState extends State<AllShows> {
                     shrinkWrap: true,
                     itemCount: 1,
                     itemBuilder: (BuildContext context, int index) {
-                      Shows shows = _showsList[index];
-                      // print('hello');
-                      // print('news image ' +
-                      //     news.newsImages.toString());
                       try {
-                        // print('news image ' +
-                        //     news.newsImages.toString());
                         return InkWell(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +92,7 @@ class _AllShowsState extends State<AllShows> {
                                       MainAxisAlignment.spaceBetween,
                                   children: const [
                                     Text(
-                                      'Shows',
+                                      'Popular',
                                       style: TextStyle(
                                           color: kTextLightColor,
                                           fontSize: 15.0,
@@ -115,7 +108,7 @@ class _AllShowsState extends State<AllShows> {
                                 ),
                               ),
 
-                              // all shows in slider view
+                              // all channel in slider view
                               SizedBox(
                                 child: _loading
                                     ? Container(
@@ -134,10 +127,11 @@ class _AllShowsState extends State<AllShows> {
                                           autoPlay: false,
                                           disableCenter: true,
                                           padEnds: false,
+                                          enableInfiniteScroll: false,
                                         ),
                                         // TODO: change the variable name news to ad when adding advertisement api
-                                        items: _showsList.map(
-                                          (single_show) {
+                                        items: _popularChannelsList.map(
+                                          (popularChannel) {
                                             return Builder(
                                               builder: (BuildContext context) {
                                                 try {
@@ -150,9 +144,9 @@ class _AllShowsState extends State<AllShows> {
                                                               context) {
                                                             // TODO: redirecting to user_screen
                                                             // return Container();
-                                                            return TvShowsScreen(
-                                                              shows:
-                                                                  single_show,
+                                                            return TvPopularChannelsScreen(
+                                                              popularChannels:
+                                                                  popularChannel,
                                                             );
                                                           },
                                                         ),
@@ -170,22 +164,21 @@ class _AllShowsState extends State<AllShows> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        10.0),
+                                                              10.0,
+                                                            ),
                                                             child:
                                                                 Image.network(
-                                                              single_show.image
+                                                              popularChannel
+                                                                  .image
                                                                   .toString(),
                                                               height: 100.0,
-                                                              // width: 100,
                                                               // for error handling
                                                               errorBuilder:
                                                                   (context,
                                                                       error,
                                                                       stackTrace) {
-                                                                return Image
-                                                                    .asset(
-                                                                  defaultShowImage,
-                                                                );
+                                                                return Image.asset(
+                                                                    defaultChannelImage);
                                                               },
 
                                                               // height: double.infinity,

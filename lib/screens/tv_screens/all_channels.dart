@@ -30,7 +30,7 @@ class _AllChannelsState extends State<AllChannels> {
     userId = await getUserId();
     ApiResponse response = await getChannels();
 
-    print('user id for all channels => $userId');
+    debugPrint('user id for all channels => $userId');
 
     // if no error so get all news in newsList[]
     if (response.error == null) {
@@ -131,6 +131,7 @@ class _AllChannelsState extends State<AllChannels> {
                                           autoPlay: false,
                                           disableCenter: true,
                                           padEnds: false,
+                                          enableInfiniteScroll: false,
                                         ),
                                         // TODO: change the variable name news to ad when adding advertisement api
                                         items: _channelsList.map(
@@ -215,14 +216,7 @@ class _AllChannelsState extends State<AllChannels> {
                 ],
               ),
             )
-          : SizedBox(
-              height:
-                  // MediaQuery.of(context).size.height - 350.0,
-                  300.0,
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+          : const SizedBox();
     } catch (e) {
       print(e);
       return Container();

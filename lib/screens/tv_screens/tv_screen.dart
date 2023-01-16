@@ -1,4 +1,6 @@
 import 'package:demo_news_app/screens/tv_screens/all_channels.dart';
+import 'package:demo_news_app/screens/tv_screens/popular_channels.dart';
+import 'package:demo_news_app/screens/tv_screens/recommended_channels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -216,6 +218,32 @@ class _TvScreenState extends State<TvScreen> {
                         ),
                       )
                     : Advertisement(loading: _loading, list: _adsList),
+
+                // recommended channels
+                if (_loading)
+                  Container(
+                    height:
+                        // MediaQuery.of(context).size.height - 350.0,
+                        300.0,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                else
+                  const RecommendedChannels(),
+
+                // popular channels
+                if (_loading)
+                  Container(
+                    height:
+                        // MediaQuery.of(context).size.height - 350.0,
+                        300.0,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                else
+                  const PopularChannels(),
 
                 // channels
                 if (_loading)
