@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                   children: [
                     // app short Logo
                     Image.asset(
-                      shortLogoURL,
+                      shortLogoBlackURL,
                       width: 250.0,
                       height: 60.0,
                     ),

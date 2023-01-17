@@ -126,7 +126,7 @@ packages:
       name: dbus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.4"
+    version: "0.7.8"
   easy_pdf_viewer:
     dependency: "direct main"
     description:
@@ -243,21 +243,21 @@ packages:
       name: flutter_local_notifications
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.1.4"
+    version: "13.0.0"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
       name: flutter_local_notifications_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "3.0.0"
   flutter_local_notifications_platform_interface:
     dependency: transitive
     description:
       name: flutter_local_notifications_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0"
+    version: "6.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -748,7 +748,7 @@ packages:
       name: timezone
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0"
+    version: "0.9.1"
   typed_data:
     dependency: transitive
     description:
@@ -916,7 +916,7 @@ packages:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.4.1"
+    version: "6.1.0"
   youtube_player_flutter:
     dependency: "direct main"
     description:

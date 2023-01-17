@@ -266,7 +266,7 @@ class _NewsScreenState extends State<NewsScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Image.asset(
-          shortLogoURL,
+          shortLogoBlackURL,
           width: 150.0,
         ),
         actions: [

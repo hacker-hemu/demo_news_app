@@ -1,8 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:demo_news_app/constants/constants.dart';
 import 'package:demo_news_app/screens/loading.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,10 +18,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: Image.asset(shortLogoURL),
+      splash: Image.asset(
+        splashScreenLogoURL,
+      ),
       nextScreen: const Loading(),
-      duration: 2000,
-      backgroundColor: Colors.white,
+      duration: 2500,
+      backgroundColor: Colors.black,
       splashTransition: SplashTransition.scaleTransition,
     );
   }

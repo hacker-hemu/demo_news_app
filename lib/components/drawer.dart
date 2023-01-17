@@ -30,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
 
               // app short Logo
               Image.asset(
-                shortLogoURL,
+                shortLogoBlackURL,
                 width: 200.0,
                 height: 50.0,
               ),

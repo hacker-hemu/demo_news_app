@@ -94,7 +94,9 @@ const districtURL = '$baseURL/api/district';
 const cityURL = '$baseURL/api/city';
 
 // image urls
-const shortLogoURL = 'assets/images/logoShort.png';
+const splashScreenLogoURL = 'assets/images/splash_screen_logo.png';
+const shortLogoBlackURL = 'assets/images/logoShortBlack.png';
+const shortLogoWhiteURL = 'assets/images/logoShortWhite.png';
 const defaultAdImage = 'assets/images/default_ad_image.jpg';
 
 const defaultNewsImage = 'assets/images/news_default_image.jpg';

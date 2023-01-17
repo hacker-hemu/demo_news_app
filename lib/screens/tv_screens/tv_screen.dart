@@ -123,7 +123,7 @@ class _TvScreenState extends State<TvScreen> {
           backgroundColor: kBgAppBarColor,
           centerTitle: true,
           title: Image.asset(
-            shortLogoURL,
+            shortLogoWhiteURL,
             width: 150.0,
           ),
           actions: [

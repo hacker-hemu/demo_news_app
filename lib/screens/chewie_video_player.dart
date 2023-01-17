@@ -86,22 +86,24 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return _loading
+    return !_loading
         ? Container(
-            height: 200.0,
+            height: _liveTvVideoList.isNotEmpty ? 200.0 : 0,
             color: Colors.black,
             child: Center(
-                child: _liveTvVideoList.isNotEmpty
-                    ? VideoItems(
-                        videoPlayerController: VideoPlayerController.network(
-                            _liveTvVideoList[0].videoLink ??
-                                'https://popular.livebox.co.in/PopularNewshls/live.m3u8'),
-                        looping: false,
-                        autoplay: false,
-                      )
-                    : Container(
-                        child: CircularProgressIndicator(),
-                      )),
+              child: _liveTvVideoList.isNotEmpty
+                  ? VideoItems(
+                      videoPlayerController: VideoPlayerController.network(
+                          _liveTvVideoList[0].videoLink ??
+                              'https://popular.livebox.co.in/PopularNewshls/live.m3u8'),
+                      looping: false,
+                      autoplay:
+                          false, //TODO: True autoplay when production mode
+                    )
+                  :
+                  // default video
+                  Container(),
+            ),
           )
         : Container();
   }
