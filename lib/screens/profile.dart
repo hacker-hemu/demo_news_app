@@ -625,7 +625,7 @@ class _ProfileState extends State<Profile> {
                                                                                   print(error);
 
                                                                                   // when network image does not load proper so show local image
-                                                                                  return Image.asset(defaultUserImage);
+                                                                                  return Image.asset(defaultNewsImage);
 
                                                                                   // return const SizedBox(
                                                                                   //
