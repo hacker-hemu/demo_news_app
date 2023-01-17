@@ -50,10 +50,10 @@ import '../components/vertical_line.dart';
 // const baseURL = 'http://192.168.0.106';
 
 // office wifi
-const baseURL = 'http://192.168.1.2';
+// const baseURL = 'http://192.168.1.2';
 
 // production URL
-// const baseURL = 'https://demonews.populartv.in';
+const baseURL = 'https://demonews.populartv.in';
 
 const loginURL = '$baseURL/api/login';
 const registerURL = '$baseURL/api/register';
@@ -115,8 +115,8 @@ const userImageURL = '';
 const categoryImageURL = '';
 
 // ticker color details
-Color secondaryColor87 = const Color(0xff2f32f4);
-Color secondaryColor45 = const Color(0xff1f00ff);
+Color secondaryColor87 = const Color(0xff9B0000);
+Color secondaryColor45 = const Color(0xff8B0000);
 
 // sharing information
 //TODO: Replace URL with this app Play Store URL

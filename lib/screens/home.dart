@@ -213,8 +213,8 @@ class _HomeState extends State<Home> {
             // Video
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.play_arrow_rounded,
-                size: 40.0,
+                Icons.live_tv_rounded,
+                size: 28.0,
               ),
               label: '',
             ),

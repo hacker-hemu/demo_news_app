@@ -97,8 +97,7 @@ class _ChewieVideoPlayerState extends State<ChewieVideoPlayer> {
                           _liveTvVideoList[0].videoLink ??
                               'https://popular.livebox.co.in/PopularNewshls/live.m3u8'),
                       looping: false,
-                      autoplay:
-                          false, //TODO: True autoplay when production mode
+                      autoplay: true,
                     )
                   :
                   // default video
