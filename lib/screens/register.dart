@@ -173,7 +173,7 @@ class _RegisterState extends State<Register> {
                               // button styling
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.blue,
+                                  (states) => Theme.of(context).primaryColor,
                                 ),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(

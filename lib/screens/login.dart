@@ -66,8 +66,8 @@ class _LoginState extends State<Login> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    textEmail.text = 'admin@example.com';
-    textPassword.text = 'password';
+    // textEmail.text = 'admin@example.com';
+    // textPassword.text = 'password';
   }
 
   @override
@@ -153,7 +153,7 @@ class _LoginState extends State<Login> {
                               },
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.blue,
+                                  (states) => Theme.of(context).primaryColor,
                                 ),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
