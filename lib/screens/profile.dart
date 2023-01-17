@@ -255,7 +255,7 @@ class _ProfileState extends State<Profile> {
                               width: 110.0,
                               height: 110.0,
                               decoration: BoxDecoration(
-                                color: Colors.amber,
+                                color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(60.0),
                                 image: _imageFile == null
                                     ? user?.image != null
@@ -586,7 +586,8 @@ class _ProfileState extends State<Profile> {
                                                                     null
                                                                 ? [
                                                                     Image.asset(
-                                                                        defaultNewsImage),
+                                                                      defaultUserImage,
+                                                                    ),
                                                                   ]
                                                                 : userNews
                                                                     .newsImages
@@ -624,7 +625,7 @@ class _ProfileState extends State<Profile> {
                                                                                   print(error);
 
                                                                                   // when network image does not load proper so show local image
-                                                                                  return Image.asset(defaultNewsImage);
+                                                                                  return Image.asset(defaultUserImage);
 
                                                                                   // return const SizedBox(
                                                                                   //

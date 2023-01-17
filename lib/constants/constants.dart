@@ -103,8 +103,10 @@ const defaultNewsImage = 'assets/images/news_default_image.jpg';
 
 const defaultCategoryImage = 'assets/images/defaultCategoryImage.png';
 
+const defaultUserImage = 'assets/images/defaultCategoryImage.png';
+
 //TODO: path change of default channel and shows image
-const defaultChannelImage = 'assets/images/defaultCategoryImage.png';
+const defaultChannelImage = 'assets/images/defaultUserImage.png';
 const defaultShowImage = 'assets/images/defaultCategoryImage.png';
 
 const newsImageURL = '${baseURL}/uploads/news';
