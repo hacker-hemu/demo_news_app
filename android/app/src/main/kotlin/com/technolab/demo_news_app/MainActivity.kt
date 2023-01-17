@@ -1,4 +1,4 @@
-package com.technolab.demo_news_app
+package com.tv.popular
 
 import io.flutter.embedding.android.FlutterActivity
 
