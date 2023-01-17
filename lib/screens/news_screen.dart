@@ -17,7 +17,6 @@ import '../constants/constants.dart';
 import '../models/api_response.dart';
 import '../models/news.dart';
 import '../models/user.dart';
-import '../notification/all_notifications_screen.dart';
 import '../notification/local_notification_service.dart';
 import '../services/ads_service.dart';
 import '../services/news_category_service.dart';
@@ -272,16 +271,16 @@ class _NewsScreenState extends State<NewsScreen> {
         ),
         actions: [
           // notification
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const NotificationScreen(),
-                  ),
-                );
-                // redirecting to home screen
-              },
-              icon: const Icon(Icons.notifications)),
+          // IconButton(
+          //     onPressed: () {
+          //       Navigator.of(context).push(
+          //         MaterialPageRoute(
+          //           builder: (context) => const NotificationScreen(),
+          //         ),
+          //       );
+          //       // redirecting to home screen
+          //     },
+          //     icon: const Icon(Icons.notifications)),
 
           // theme change
           IconButton(
@@ -336,7 +335,7 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
 
       // drawer TODO: Create a news page for drawer
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
 
       body: _loading
           ? const Center(
@@ -670,7 +669,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                                   .height -
                                               250.0,
                                           child: const Center(
-                                            child: Text('No News Found'),
+                                            child: CircularProgressIndicator(),
                                           ),
                                         ),
                                 ],
@@ -952,7 +951,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                                               height: 200.0,
                                                               viewportFraction:
                                                                   1,
-                                                              autoPlay: true,
+                                                              autoPlay: false,
                                                             ),
                                                             // TODO: change the variable name news to ad when adding advertisment api
 
@@ -1060,45 +1059,47 @@ class _NewsScreenState extends State<NewsScreen> {
                                                       children: [
                                                         //like
                                                         likeShareComment(
-                                                            label:
-                                                                'Like ${news.likesCount ?? 0}',
-                                                            icon: news.selfLiked ==
-                                                                    true
-                                                                ? FontAwesomeIcons
-                                                                    .solidHeart
-                                                                : FontAwesomeIcons
-                                                                    .heart,
-                                                            iconColor:
-                                                                news.selfLiked ==
-                                                                        true
-                                                                    ? Colors.red
-                                                                    : Colors
-                                                                        .black45,
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Like And Dislike');
+                                                          label:
+                                                              'Like ${news.likesCount ?? 0}',
+                                                          icon: news.selfLiked ==
+                                                                  true
+                                                              ? FontAwesomeIcons
+                                                                  .solidHeart
+                                                              : FontAwesomeIcons
+                                                                  .heart,
+                                                          iconColor:
+                                                              news.selfLiked ==
+                                                                      true
+                                                                  ? Colors.red
+                                                                  : Colors
+                                                                      .black45,
+                                                          onPressed: () {
+                                                            print(
+                                                                'Like And Dislike');
 
-                                                              _handleNewsLikeAndDislike(
-                                                                  news.id ?? 0);
-                                                            }),
+                                                            _handleNewsLikeAndDislike(
+                                                                news.id ?? 0);
+                                                          },
+                                                        ),
                                                         //comment
                                                         likeShareComment(
-                                                            label: 'Comment',
-                                                            icon:
-                                                                FontAwesomeIcons
-                                                                    .comment,
-                                                            //TODO: I using theme primary color of the app
-                                                            iconColor:
-                                                                Colors.black38,
-                                                            onPressed: () {
-                                                              debugPrint(
-                                                                  'Do comment functionality');
-                                                            }),
+                                                          label: 'Comment',
+                                                          icon: FontAwesomeIcons
+                                                              .comment,
+                                                          //TODO: I using theme primary color of the app
+                                                          iconColor:
+                                                              Colors.black38,
+                                                          onPressed: () {
+                                                            debugPrint(
+                                                                'Do comment functionality');
+                                                          },
+                                                        ),
                                                         //share
                                                         likeShareComment(
                                                           label: 'Share',
-                                                          icon: FontAwesomeIcons
-                                                              .share,
+                                                          icon: Icons.share,
+                                                          iconColor:
+                                                              Colors.black38,
                                                           onPressed: () {
                                                             Share.share(
                                                                 '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
