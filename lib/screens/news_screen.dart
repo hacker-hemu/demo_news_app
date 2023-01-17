@@ -1102,9 +1102,9 @@ class _NewsScreenState extends State<NewsScreen> {
                                                               Colors.black38,
                                                           onPressed: () {
                                                             Share.share(
-                                                                '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                                                                '${news.title}\n\n\n$shareTopLine\n\n$playStoreAppLink\n\n\n $shareOurServices\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
                                                                 subject:
-                                                                    'Look what I made!');
+                                                                    '$appName');
                                                           },
                                                         ),
                                                       ],

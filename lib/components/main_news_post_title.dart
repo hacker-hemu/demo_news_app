@@ -90,7 +90,7 @@ class MainNewsPostTitle extends StatelessWidget {
                     ' ने ',
                   ),
                   Text(
-                    '$category ताजा खबरो ',
+                    '$category ताजा खबरों ',
                     style: TextStyle(
                       color: textColor,
                       fontSize: 15.0,
@@ -99,7 +99,7 @@ class MainNewsPostTitle extends StatelessWidget {
                 ],
               ),
               Text(
-                'के बारे में पोस्ट किया | $hourAgo ',
+                'के बारे में पोस्ट किया है | $hourAgo ',
                 style: const TextStyle(
                   fontSize: 14.0,
                   color: Colors.black45,

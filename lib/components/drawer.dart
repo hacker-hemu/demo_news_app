@@ -119,8 +119,8 @@ class CustomDrawer extends StatelessWidget {
                 label: 'Share With Friend',
                 onTap: () {
                   Share.share(
-                      'न्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                      subject: 'Look what I made!');
+                      '$shareTopLine\n\n$playStoreAppLink\n\n\n $shareOurServices\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                      subject: '$appName');
                 },
                 iconColor: Theme.of(context).primaryColor,
               ),

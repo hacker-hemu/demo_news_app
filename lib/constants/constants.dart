@@ -124,8 +124,12 @@ Color secondaryColor45 = const Color(0xff1f00ff);
 const playStoreAppLink =
     'https://play.google.com/store/apps/details?id=com.tv.popular';
 
-const clientMobileNumber = '9610448066';
-const clientEmail = 'demmonewsapp@example.com';
+const clientMobileNumber = '9024123007';
+const clientEmail = 'tv@populartv.in';
+const shareTopLine =
+    'पॉपुलर टीवी डाउनलोड करने के लिए नीचे दिए गए लिंक पर क्लिक करें';
+const shareOurServices =
+    'GTPL भीलवाड़ा केबल नेटवर्क पर क्रिकेट मैच लाइव, कथा, भजन संध्या, कव्वाली महफिल और सभी धार्मिक कार्यक्रमों के सीधे प्रसारण के लिए संपर्क करें: 9024123007 ';
 
 // -------  Errors  -------
 const serverError = 'Server Error';
@@ -133,8 +137,8 @@ const unauthorized = 'Unauthorized';
 const someThingWentWrong = 'Some Thing Went Wrong, Try Again';
 
 // app details
-const appName = 'Demo News App';
-const appVersion = '1.0';
+const appName = 'Popular Tv';
+const appVersion = '1.10.0';
 const developerName = 'Hemant Kumar Joshi';
 
 // ------- Tv details  Start -------

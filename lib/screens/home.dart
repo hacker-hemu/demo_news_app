@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       // appbar
       // appBar: AppBar(
-      //   title: const Text('Demo News App'),
+      //   title: const Text('Popular Tv'),
       //   actions: [
       //     IconButton(
       //         onPressed: () {

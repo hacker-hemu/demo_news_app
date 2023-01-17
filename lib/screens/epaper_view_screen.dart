@@ -1,6 +1,5 @@
 import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../components/likeCommentShare.dart';
@@ -48,12 +47,12 @@ class _EpaperViewScreenState extends State<EpaperViewScreen> {
           //share
           likeShareComment(
               label: '',
-              icon: FontAwesomeIcons.shareNodes,
+              icon: Icons.share,
               iconColor: Colors.white,
               onPressed: () {
                 Share.share(
-                    '${widget.name}\n\n\n${widget.date}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                    subject: 'Look what I made!');
+                    '${widget.name}\n\n\n$shareTopLine\n\n$playStoreAppLink\n\n\n $shareOurServices\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
+                    subject: '$appName');
               }),
         ],
       ),

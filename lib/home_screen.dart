@@ -423,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.black,
           centerTitle: true,
           title: const Text(
-            'Demo News App',
+            'Popular Tv',
           ),
         ),
         body: SingleChildScrollView(

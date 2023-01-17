@@ -32,7 +32,7 @@ class MainDrawer extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(12.0),
             child: Text(
-              'Demo News App',
+              'Popular Tv',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.0,

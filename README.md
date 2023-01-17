@@ -1,6 +1,6 @@
 # demo_news_app
 
-Demo News App Description
+Popular Tv Description
 
 ## Getting Started
 
