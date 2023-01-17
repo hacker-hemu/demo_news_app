@@ -73,6 +73,7 @@ const sportsChannelsURL = '$baseURL/api/sports_channels';
 
 const showsURL = '$baseURL/api/shows';
 const partsURL = '$baseURL/api/parts';
+const liveTvVideoURL = '$baseURL/api/liveTvVideo';
 
 // news category url
 const categoryURL = '$baseURL/api/category';
