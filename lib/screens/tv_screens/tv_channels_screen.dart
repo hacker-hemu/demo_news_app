@@ -122,7 +122,7 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                 backgroundColor: kBgAppBarColor,
                 centerTitle: true,
                 title: Image.asset(
-                  shortLogoBlackURL,
+                  shortLogoWhiteURL,
                   width: 150.0,
                 ),
                 actions: [
@@ -141,7 +141,8 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                 leading: IconButton(
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (context) => TvScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const TvScreen()),
                         (Route<dynamic> route) => false);
                     // redirecting to home screen
                   },
@@ -311,7 +312,7 @@ class _TvChannelsScreenState extends State<TvChannelsScreen> {
                       : Advertisement(loading: _loading, list: _adsList),
 
                   // vertical space
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
 

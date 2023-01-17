@@ -125,7 +125,7 @@ class _TvRecommendedChannelsScreenState
                 backgroundColor: kBgAppBarColor,
                 centerTitle: true,
                 title: Image.asset(
-                  shortLogoBlackURL,
+                  shortLogoWhiteURL,
                   width: 150.0,
                 ),
                 actions: [
