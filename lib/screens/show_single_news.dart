@@ -677,7 +677,11 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                                                                                         print(error);
 
                                                                                         // when network image does not load proper so show local image
-                                                                                        return Image.asset(defaultNewsImage);
+                                                                                        return Image.asset(
+                                                                                          defaultNewsImage,
+                                                                                          width: 140.0,
+                                                                                          height: 78.75,
+                                                                                        );
 
                                                                                         // return const SizedBox(
                                                                                         //

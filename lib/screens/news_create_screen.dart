@@ -71,7 +71,6 @@ class _NewsCreateScreenState extends State<NewsCreateScreen> {
 
     // final value = keyEditor.currentState?.getText();
 
-
     if (response.error == null) {
       Navigator.of(context).pop();
     } else if (response.error == unauthorized) {
@@ -316,7 +315,7 @@ class _NewsCreateScreenState extends State<NewsCreateScreen> {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateColor.resolveWith(
-                        (states) => Colors.blue,
+                        (states) => Theme.of(context).primaryColor,
                       ),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
