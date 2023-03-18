@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:badges/src/badge.dart' as badge;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -352,7 +353,7 @@ class _TvShowsScreenState extends State<TvShowsScreen> {
                                   shows.isLive == 1
                                       ? Positioned(
                                           right: 0,
-                                          child: Badge(
+                                          child: badge.Badge(
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 5.0),
                                             animationType:

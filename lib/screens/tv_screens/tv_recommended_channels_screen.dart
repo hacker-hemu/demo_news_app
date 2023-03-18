@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:badges/src/badge.dart' as badge;
 import 'package:demo_news_app/models/tv_models/recommended_channels.dart';
 import 'package:demo_news_app/screens/tv_screens/tv_screen.dart';
 import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
@@ -268,7 +269,7 @@ class _TvRecommendedChannelsScreenState
                           ),
                         ),
                         // category badge
-                        Badge(
+                        badge.Badge(
                           padding: EdgeInsets.symmetric(horizontal: 5.0),
                           animationType: BadgeAnimationType.fade,
                           shape: BadgeShape.square,
@@ -379,7 +380,7 @@ class _TvRecommendedChannelsScreenState
                                   shows.isLive == 1
                                       ? Positioned(
                                           right: 0,
-                                          child: Badge(
+                                          child: badge.Badge(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5.0),
                                             animationType:

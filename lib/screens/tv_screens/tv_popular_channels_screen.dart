@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:badges/src/badge.dart' as badge;
 import 'package:demo_news_app/screens/tv_screens/tv_screen.dart';
 import 'package:demo_news_app/screens/tv_screens/tv_shows_screen.dart';
 import 'package:flutter/material.dart';
@@ -267,7 +268,7 @@ class _TvPopularChannelsScreenState extends State<TvPopularChannelsScreen> {
                           ),
                         ),
                         // category badge
-                        Badge(
+                        badge.Badge(
                           padding: EdgeInsets.symmetric(horizontal: 5.0),
                           animationType: BadgeAnimationType.fade,
                           shape: BadgeShape.square,
@@ -378,7 +379,7 @@ class _TvPopularChannelsScreenState extends State<TvPopularChannelsScreen> {
                                   shows.isLive == 1
                                       ? Positioned(
                                           right: 0,
-                                          child: Badge(
+                                          child: badge.Badge(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5.0),
                                             animationType:
