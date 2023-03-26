@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:share_plus/share_plus.dart';
@@ -174,8 +173,9 @@ class _ShowSingleNewsState extends State<ShowSingleNews> {
                 iconColor: Colors.white,
                 onPressed: () {
                   Share.share(
-                      '${news.title}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n',
-                      subject: 'Look what I made!');
+                    '${news.title}\n\n\n ${news.news_desc}\n\n\nन्यूज़ के लिए आज ही ऐप इंस्टॉल करें।\n\n$playStoreAppLink\n\n\nसंपर्क करें: $clientMobileNumber\nEmail: $clientEmail\n\n\n${news.newsImages![0]}',
+                    subject: 'Look what I made!',
+                  );
                 },
                 iconSize: 20.0),
           ],
