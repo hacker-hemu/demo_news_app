@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "19635659307",
-    "project_id": "populartv-2aae7",
-    "storage_bucket": "populartv-2aae7.appspot.com"
+    "project_number": "637029703984",
+    "project_id": "demonewsapp-71bd7",
+    "storage_bucket": "demonewsapp-71bd7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:19635659307:android:eaca0e1b405ebd124bc06e",
+        "mobilesdk_app_id": "1:637029703984:android:026ae263fea41a036068f5",
         "android_client_info": {
           "package_name": "com.tv.popular"
         }
       },
       "oauth_client": [
         {
-          "client_id": "19635659307-cs6l0f6qbks5hfqnrq5dfdj37kr17dkf.apps.googleusercontent.com",
+          "client_id": "637029703984-o8ruk1aut30qbuot68he2b66ip5mhise.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.tv.popular",
-            "certificate_hash": "5fb69c822d32ed1bfe9b4699a438664b253aac80"
+            "certificate_hash": "f62280bab5983b8c7b39a46c7bc13124ba41718f"
           }
         },
         {
-          "client_id": "19635659307-sh8k8g47fortmdid8q1puobv51j1ubfs.apps.googleusercontent.com",
+          "client_id": "637029703984-ot9gsjtrro4i216qbu1utrq64fvamqea.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB3NmhC-w9J8z2ljkUh-2--XiN_IqBmlkY"
+          "current_key": "AIzaSyDccBK3OePK4y1Gt92Eklm4nx7gqP8B6bQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "19635659307-sh8k8g47fortmdid8q1puobv51j1ubfs.apps.googleusercontent.com",
+              "client_id": "637029703984-ot9gsjtrro4i216qbu1utrq64fvamqea.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

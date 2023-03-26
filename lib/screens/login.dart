@@ -181,6 +181,26 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        const Text(' Login as '),
+                        GestureDetector(
+                          child: const Text(
+                            'Guest',
+                            style: TextStyle(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          onTap: () {
+                            textEmail.text = "guest@example.com";
+                            textPassword.text = "password";
+                          },
+                        ),
+                      ],
+                    ),
+
+                    // if not have an account
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         const Text(' Dont have an account? '),
                         GestureDetector(
                           child: const Text(

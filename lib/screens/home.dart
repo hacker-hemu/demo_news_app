@@ -1,7 +1,7 @@
 import 'package:demo_news_app/screens/epaper_screen.dart';
 import 'package:demo_news_app/screens/news_screen.dart';
 import 'package:demo_news_app/screens/profile.dart';
-import 'package:demo_news_app/screens/tv_screens/tv_screen.dart';
+import 'package:demo_news_app/screens/webview_screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'news_create_screen.dart';
@@ -19,13 +19,15 @@ class _HomeState extends State<Home> {
   bool loading = false;
 
   // all bottomBar screens
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     // main news screen
     NewsScreen(),
 
     // video screen
     // ChewieVideoPlayer(),
-    TvScreen(),
+    // TvScreen(),
+
+    WebViewScreen(),
 
     // create news
     NewsCreateScreen(),
