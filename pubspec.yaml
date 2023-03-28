@@ -49,6 +49,8 @@ dependencies:
   badges: ^2.0.3
   sticky_headers: ^0.3.0+2
   google_sign_in: ^6.0.2
+  onesignal_flutter: ^3.5.1
+#  cloud_firestore: ^4.4.5
 
 #  app_settings: ^4.2.0
 #  cloud_firestore: ^4.3.1

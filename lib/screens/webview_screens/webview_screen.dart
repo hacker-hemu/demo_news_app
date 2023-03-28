@@ -27,6 +27,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
   InAppWebViewController? webViewController;
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
       crossPlatform: InAppWebViewOptions(
+        supportZoom: false,
         userAgent: 'random',
         useShouldOverrideUrlLoading: true,
         mediaPlaybackRequiresUserGesture: false,
@@ -192,29 +193,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
             ],
           ),
         ),
-        // ButtonBar(
-        //   alignment: MainAxisAlignment.center,
-        //   children: <Widget>[
-        //     ElevatedButton(
-        //       child: Icon(Icons.arrow_back),
-        //       onPressed: () {
-        //         webViewController?.goBack();
-        //       },
-        //     ),
-        //     ElevatedButton(
-        //       child: Icon(Icons.arrow_forward),
-        //       onPressed: () {
-        //         webViewController?.goForward();
-        //       },
-        //     ),
-        //     ElevatedButton(
-        //       child: Icon(Icons.refresh),
-        //       onPressed: () {
-        //         webViewController?.reload();
-        //       },
-        //     ),
-        //   ],
-        // ),
       ])),
     ));
   }
