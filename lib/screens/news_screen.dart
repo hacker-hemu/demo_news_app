@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_news_app/screens/show_single_news.dart';
 import 'package:demo_news_app/services/news_service.dart';
 import 'package:demo_news_app/services/user_service.dart';
@@ -20,6 +23,7 @@ import '../models/user.dart';
 import '../notification/local_notification_service.dart';
 import '../services/ads_service.dart';
 import '../services/news_category_service.dart';
+import 'Comman/check_connectitvity.dart';
 import 'demo.dart';
 import 'login.dart';
 
@@ -188,6 +192,11 @@ class _NewsScreenState extends State<NewsScreen> {
     }
   }
 
+  String status = "Waiting...";
+
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription _streamSubscription;
+
   // init state
   @override
   void initState() {
@@ -255,6 +264,54 @@ class _NewsScreenState extends State<NewsScreen> {
         }
       },
     );
+
+    // check internet connectivity
+    checkRealtimeConnection();
+  }
+
+  void checkConnectivity() async {
+    var connectionResult = await _connectivity.checkConnectivity();
+    print(status);
+
+    if (connectionResult == ConnectivityResult.mobile) {
+      status = "MobileData";
+      print(status);
+    } else if (connectionResult == ConnectivityResult.wifi) {
+      status = "Wifi";
+      print(status);
+    } else {
+      status = "Not Connected";
+      print(status);
+    }
+    setState(() {});
+  }
+
+  void checkRealtimeConnection() {
+    _streamSubscription = _connectivity.onConnectivityChanged.listen((event) {
+      if (event == ConnectivityResult.mobile) {
+        status = "MobileData";
+        print(status);
+      } else if (event == ConnectivityResult.wifi) {
+        status = "Wifi";
+        print(status);
+      } else {
+        status = "Not Connected";
+        print(status);
+
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const CheckConnectivity(),
+            ),
+            (route) => false);
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription.cancel();
+    super.dispose();
   }
 
   @override

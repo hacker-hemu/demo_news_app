@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../Comman/check_connectitvity.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,9 +47,19 @@ class _WebViewScreenState extends State<WebViewScreen> {
   double progress = 0;
   final urlController = TextEditingController();
 
+  // internet connection check
+  String status = "Waiting...";
+
+  final Connectivity _connectivity = Connectivity();
+
+  late StreamSubscription _streamSubscription;
+
   @override
   void initState() {
     super.initState();
+
+    // check internet connectivity
+    checkRealtimeConnection();
 
     pullToRefreshController = PullToRefreshController(
       options: PullToRefreshOptions(
@@ -63,8 +76,46 @@ class _WebViewScreenState extends State<WebViewScreen> {
     );
   }
 
+  void checkConnectivity() async {
+    var connectionResult = await _connectivity.checkConnectivity();
+    print(status);
+
+    if (connectionResult == ConnectivityResult.mobile) {
+      status = "MobileData";
+      print(status);
+    } else if (connectionResult == ConnectivityResult.wifi) {
+      status = "Wifi";
+      print(status);
+    } else {
+      status = "Not Connected";
+      print(status);
+    }
+    setState(() {});
+  }
+
+  void checkRealtimeConnection() {
+    _streamSubscription = _connectivity.onConnectivityChanged.listen((event) {
+      if (event == ConnectivityResult.mobile) {
+        status = "MobileData";
+        print(status);
+      } else if (event == ConnectivityResult.wifi) {
+        status = "Wifi";
+        print(status);
+      } else {
+        status = "Not Connected";
+        print(status);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => CheckConnectivity(),
+            ),
+            (route) => false);
+      }
+    });
+  }
+
   @override
   void dispose() {
+    _streamSubscription.cancel();
     super.dispose();
   }
 

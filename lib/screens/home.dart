@@ -1,9 +1,13 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_news_app/screens/epaper_screen.dart';
 import 'package:demo_news_app/screens/news_screen.dart';
 import 'package:demo_news_app/screens/profile.dart';
 import 'package:demo_news_app/screens/webview_screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'Comman/check_connectitvity.dart';
 import 'news_create_screen.dart';
 
 class Home extends StatefulWidget {
@@ -17,6 +21,65 @@ class _HomeState extends State<Home> {
   // for bottomBar
   int currentIndex = 0;
   bool loading = false;
+
+  String status = "Waiting...";
+
+  final Connectivity _connectivity = Connectivity();
+
+  late StreamSubscription _streamSubscription;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // check internet connectivity
+    checkRealtimeConnection();
+  }
+
+  void checkConnectivity() async {
+    var connectionResult = await _connectivity.checkConnectivity();
+    print(status);
+
+    if (connectionResult == ConnectivityResult.mobile) {
+      status = "MobileData";
+      print(status);
+    } else if (connectionResult == ConnectivityResult.wifi) {
+      status = "Wifi";
+      print(status);
+    } else {
+      status = "Not Connected";
+      print(status);
+    }
+    setState(() {});
+  }
+
+  void checkRealtimeConnection() {
+    _streamSubscription = _connectivity.onConnectivityChanged.listen((event) {
+      if (event == ConnectivityResult.mobile) {
+        status = "MobileData";
+        print(status);
+      } else if (event == ConnectivityResult.wifi) {
+        status = "Wifi";
+        print(status);
+      } else {
+        status = "Not Connected";
+        print(status);
+
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const CheckConnectivity(),
+            ),
+            (route) => false);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription.cancel();
+    super.dispose();
+  }
 
   // all bottomBar screens
   static List<Widget> _widgetOptions = <Widget>[

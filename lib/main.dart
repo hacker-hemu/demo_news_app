@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:upgrader/upgrader.dart';
 
 import 'notification/local_notification_service.dart';
 
@@ -45,7 +46,20 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.light,
       // home: const Loading(),
-      home: const SplashScreen(),
+      home: UpgradeAlert(
+        upgrader: Upgrader(
+          onIgnore: () {
+            SystemNavigator.pop();
+            throw UnsupportedError('_');
+          },
+          durationUntilAlertAgain: const Duration(days: 10),
+          showIgnore: false,
+          showLater: false,
+          shouldPopScope: () => false,
+          languageCode: "hi",
+        ),
+        child: const SplashScreen(),
+      ),
     );
   }
 }
