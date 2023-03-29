@@ -115,11 +115,12 @@ class _CheckConnectivityState extends State<CheckConnectivity> {
               height: 60,
               onPressed: () {
                 // webViewController?.reload();
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
-                    ),
-                    (route) => false);
+                setState(() {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => super.widget));
+                });
               },
               color: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(
