@@ -78,150 +78,154 @@ class _LoginState extends State<Login> {
       //   title: Text('Login'),
       //   centerTitle: true,
       // ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // app short Logo
-                    Image.asset(
-                      shortLogoBlackURL,
-                      width: 250.0,
-                      height: 60.0,
-                    ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // app short Logo
+                      Image.asset(
+                        shortLogoBlackURL,
+                        width: 250.0,
+                        height: 60.0,
+                      ),
 
-                    // vertical space
-                    const SizedBox(
-                      height: 40.0,
-                    ),
+                      // vertical space
+                      const SizedBox(
+                        height: 40.0,
+                      ),
 
-                    // email
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: textEmail,
-                      validator: (val) =>
-                          val!.isEmpty ? 'Invalid Email Address' : null,
-                      decoration: kInputDecoration('Email'),
-                    ),
+                      // email
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: textEmail,
+                        validator: (val) =>
+                            val!.isEmpty ? 'Invalid Email Address' : null,
+                        decoration: kInputDecoration('Email'),
+                      ),
 
-                    // vertical space
-                    const SizedBox(
-                      height: 20.0,
-                    ),
+                      // vertical space
+                      const SizedBox(
+                        height: 20.0,
+                      ),
 
-                    // password
-                    TextFormField(
-                      controller: textPassword,
-                      obscureText: true,
-                      validator: (val) =>
-                          val!.length < 8 ? 'Minimum 8 character' : null,
-                      decoration: kInputDecoration('Password'),
-                    ),
+                      // password
+                      TextFormField(
+                        controller: textPassword,
+                        obscureText: true,
+                        validator: (val) =>
+                            val!.length < 8 ? 'Minimum 8 character' : null,
+                        decoration: kInputDecoration('Password'),
+                      ),
 
-                    // vertical space
-                    const SizedBox(
-                      height: 30.0,
-                    ),
+                      // vertical space
+                      const SizedBox(
+                        height: 30.0,
+                      ),
 
-                    loading
-                        ? const Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        :
-                        // login button
-                        Container(
-                            width: 250.0,
-                            margin:
-                                const EdgeInsets.symmetric(horizontal: 50.0),
-                            child: TextButton(
-                              onPressed: () {
-                                print('login pressed');
-                                if (formKey.currentState!.validate()) {
-                                  _loginUser();
-                                  setState(() {
-                                    loading = true;
+                      loading
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          :
+                          // login button
+                          Container(
+                              width: 250.0,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 50.0),
+                              child: TextButton(
+                                onPressed: () {
+                                  print('login pressed');
+                                  if (formKey.currentState!.validate()) {
                                     _loginUser();
-                                    print('login clicked');
-                                  });
-                                }
-                              },
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Theme.of(context).primaryColor,
+                                    setState(() {
+                                      loading = true;
+                                      _loginUser();
+                                      print('login clicked');
+                                    });
+                                  }
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateColor.resolveWith(
+                                    (states) => Theme.of(context).primaryColor,
+                                  ),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                          const EdgeInsets.all(15.0)),
                                 ),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0),
+                                child: const Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    color: Colors.white,
                                   ),
                                 ),
-                                padding: MaterialStateProperty.all<EdgeInsets>(
-                                    const EdgeInsets.all(15.0)),
-                              ),
-                              child: const Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
                               ),
                             ),
-                          ),
 
-                    const SizedBox(
-                      height: 20.0,
-                    ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
 
-                    // if not have an account
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(' Login as '),
-                        GestureDetector(
-                          child: const Text(
-                            'Guest',
-                            style: TextStyle(
-                              color: Colors.blue,
+                      // if not have an account
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(' Login as '),
+                          GestureDetector(
+                            child: const Text(
+                              'Guest',
+                              style: TextStyle(
+                                color: Colors.blue,
+                              ),
                             ),
+                            onTap: () {
+                              textEmail.text = "guest@example.com";
+                              textPassword.text = "password";
+                            },
                           ),
-                          onTap: () {
-                            textEmail.text = "guest@example.com";
-                            textPassword.text = "password";
-                          },
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    // if not have an account
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(' Dont have an account? '),
-                        GestureDetector(
-                          child: const Text(
-                            'Register',
-                            style: TextStyle(
-                              color: Colors.blue,
+                      // if not have an account
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(' Dont have an account? '),
+                          GestureDetector(
+                            child: const Text(
+                              'Register',
+                              style: TextStyle(
+                                color: Colors.blue,
+                              ),
                             ),
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        new Register())),
                           ),
-                          onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      new Register())),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
