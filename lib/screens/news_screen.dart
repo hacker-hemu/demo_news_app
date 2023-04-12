@@ -7,6 +7,7 @@ import 'package:demo_news_app/services/news_service.dart';
 import 'package:demo_news_app/services/user_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
@@ -268,6 +269,14 @@ class _NewsScreenState extends State<NewsScreen> {
 
     // check internet connectivity
     checkRealtimeConnection();
+
+    // portraitmode is allow in this screen
+    SystemChrome.setPreferredOrientations([
+      // DeviceOrientation.landscapeRight,
+      // DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   void checkConnectivity() async {

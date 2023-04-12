@@ -100,7 +100,7 @@ class _TvScreenState extends State<TvScreen> {
     debugPrint('=========== top ads retrieve function called ==============');
     retriveAds();
 
-    // portrait and landscape both mode is allow in this screen
+    // portraitmode is allow in this screen
     SystemChrome.setPreferredOrientations([
       // DeviceOrientation.landscapeRight,
       // DeviceOrientation.landscapeLeft,
