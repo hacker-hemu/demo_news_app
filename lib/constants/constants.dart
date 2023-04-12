@@ -121,8 +121,7 @@ Color secondaryColor45 = const Color(0xff8B0000);
 // sharing information
 //TODO: Replace URL with this app Play Store URL
 // playStore aap URL
-const playStoreAppLink =
-    'https://play.google.com/store/apps/details?id=com.tv.popular';
+const playStoreAppLink = 'https://populartvapp.page.link/open';
 
 const clientMobileNumber = '9024123007';
 const clientEmail = 'tv@populartv.in';

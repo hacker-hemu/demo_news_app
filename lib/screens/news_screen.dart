@@ -24,6 +24,7 @@ import '../notification/local_notification_service.dart';
 import '../services/ads_service.dart';
 import '../services/news_category_service.dart';
 import 'Comman/check_connectitvity.dart';
+import 'chewie_video_player.dart';
 import 'demo.dart';
 import 'login.dart';
 
@@ -418,6 +419,13 @@ class _NewsScreenState extends State<NewsScreen> {
                       // vertical space
                       const SizedBox(
                         height: 2.5,
+                      ),
+
+                      ChewieVideoPlayer(),
+
+                      // vertical space
+                      const SizedBox(
+                        height: 10.0,
                       ),
 
                       // carousel for advertisement
